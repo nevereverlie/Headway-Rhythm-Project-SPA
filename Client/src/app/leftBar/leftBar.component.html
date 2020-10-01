@@ -1,0 +1,58 @@
+<div class="leftBar">
+
+  <div class="leftBarUpperDivMain">
+    <table class="leftBarUpperDiv">
+
+      <tr>
+        <a [routerLink]="['']">
+          <td><i class="fa fa-home" aria-hidden="true"></i></td>
+          <td><span>Home</span></td>
+        </a>
+      </tr>
+
+      <tr>
+        <a [routerLink]="['']">
+          <td><i class="fas fa-compact-disc"></i></td>
+          <td><span>Library</span></td>
+        </a>
+      </tr>
+      <tr>
+        <a [routerLink]="['']">
+          <td><i class="fa fa-user"></i></td>
+          <td><span>Profile</span></td>
+        </a>
+      </tr>
+    </table>
+  </div>
+
+  <div class="leftBarLowerDiv">
+    <div class="leftBarLowerDivInside">
+      <div class="infospanDiv">
+        <span class="info-span">COMMON PLAYLISTS</span>
+      </div>
+      <div class="playlistDiv">
+        <span class="playlistSpan">For mom</span>
+      </div>
+      <div class="playlistDiv">
+        <span class="playlistSpan">inside your car</span>
+      </div>
+      <div class="playlistDiv">
+        <span class="playlistSpan">.badmood</span>
+      </div>
+      <div class="playlistDiv">
+        <span class="playlistSpan">Going crazy</span>
+      </div>
+      <div class="playlistDiv">
+        <span class="playlistSpan">Classic rock</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="leftBarCreatePlaylistDiv">
+    <div class="leftBarCreatePlaylistDivInside" [routerLink]="['/library/playlists/create']">
+      <i class="fa fa-plus"></i>
+      <span>New Playlist</span>
+    </div>
+  </div>
+
+</div>

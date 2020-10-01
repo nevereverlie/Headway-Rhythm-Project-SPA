@@ -1,0 +1,126 @@
+nav{
+  background-color: black;
+  width: 60%;
+  height: 65px;
+  position: absolute;
+  top: 0;
+  left: 20%;
+}
+
+.navInside{
+  height: 100%;
+  width:100%;
+}
+
+.backFrontIcons{
+  display: inline-block;
+  width: 15%;
+  margin-left: 5%;
+  margin-top: 15px;
+  font-size: 25px;
+  color: rgb(200,200,200);
+}
+.navIcon{
+  display: inline-block;
+  width: 50%;
+  cursor: pointer;
+}
+.navIcon:hover{
+  color: white;
+}
+
+.searchForm{
+  width: 60%;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+.searchIconDiv{
+  display: inline;
+}
+.searchIcon{
+  /* font-size: 20px; */
+  color: rgb(200,200,200);
+}
+.searchFormInput{
+  display: inline;
+  min-width: 90%;
+  max-width: 100%;
+  margin-left: 5px;
+
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid rgb(200,200,200);
+  outline: none;
+  color: rgb(200,200,200);
+}
+
+.loginButtonDiv{
+  width: 20%;
+  height: 100%;
+  display: inline-block;
+  margin-top: 15px;
+  color: rgb(200,200,200);
+  font-size: 22px;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.loggedUserDropdown{
+  width: 20%;
+  display: inline-block;
+  padding-top: 15px;
+  color: rgb(200,200,200);
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+}
+
+.loggedUserText{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.loginButtonDiv:hover span{
+  color: white;
+}
+
+.loginButtonDiv:hover span fa-icon{
+  color: rgb(180, 0, 255);
+}
+
+@media screen and (max-width: 840px) {
+  nav{
+      width: 75%;
+      left: 25%;
+      right: 0;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  nav{
+      width: 100%;
+      left: 0;
+      right: 0;
+  }
+  .backFrontIcons{
+      display: none;
+  }
+  .searchForm{
+      width: 100%;
+  }
+  .loginButtonDiv, .loggedUserDropdown{
+      display: none;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .searchIconDiv{
+      display: none;
+  }
+  .searchFormInput{
+      width:100%;
+  }
+}
