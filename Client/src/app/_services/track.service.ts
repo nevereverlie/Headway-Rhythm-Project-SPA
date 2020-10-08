@@ -15,7 +15,7 @@ export class TrackService {
   constructor(private http: HttpClient) { }
 
   getTracks() {
-    return this.http.get('https://localhost:5001/api/tracks');
+    return this.http.get('http://localhost:5001/api/tracks');
   }
 
 
