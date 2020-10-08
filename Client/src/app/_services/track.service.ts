@@ -1,5 +1,12 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { faArrowCircleDown } from '@fortawesome/free-solid-svg-icons';
+import { faPlay } from '@fortawesome/free-solid-svg-icons';
+import { faPause } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +18,13 @@ export class TrackService {
   resumeTrack: EventEmitter<any> = new EventEmitter();
   activeTrackColor = 'rgb(70, 0, 100)';
   userTracksUIupdate: EventEmitter<any> = new EventEmitter();
+  faArrowAltCircleDown = faArrowCircleDown;
+  faPlay = faPlay;
+  faPause = faPause;
+  faTimes = faTimes;
+  faSearch = faSearch;
+  faPlus = faPlus;
+  faEllipsisV = faEllipsisV;
 
   constructor(private http: HttpClient) { }
 
@@ -39,6 +53,32 @@ export class TrackService {
     }
   }
 
+  trackDivClick(id: string) {
+    const trackDiv = document.getElementById(id);
+    const trackDivs = document.getElementsByClassName('trackDiv');
+    for (let i = 0; i < trackDivs.length; i++) {
+      const current = trackDivs[i] as HTMLElement;
+      current.style.backgroundColor = 'inherit';
+      current.style.borderBottom = '1px solid rgb(45,45,45)';
+    }
+    trackDiv.style.backgroundColor = this.activeTrackColor;
+    trackDiv.style.borderBottom = '1px solid rgb(180, 0, 255)';
+  }
+
+  trackDivMouseOver(id: string) {
+    const trackDiv = document.getElementById(id);
+    if (trackDiv.style.backgroundColor !== this.activeTrackColor) {
+      trackDiv.style.backgroundColor = 'rgb(40,40,40)';
+    }
+  }
+
+  trackDivMouseOut(id: string) {
+    const trackDiv = document.getElementById(id);
+    if (trackDiv.style.backgroundColor !== this.activeTrackColor) {
+      trackDiv.style.backgroundColor = 'inherit';
+    }
+  }
+
   downloadIconMouseOver(e: Event) {
     e.stopPropagation();
   }
@@ -52,5 +92,4 @@ export class TrackService {
     // console.log('found' + newLink);
     link.href = newLink;
   }
-
 }
