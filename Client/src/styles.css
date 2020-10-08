@@ -21,6 +21,50 @@ html, body{
     background-color: rgb(25, 25, 25);
 }
 
+::-webkit-scrollbar {
+    width: 11px;
+}
+
+::-webkit-scrollbar-track {
+    /* -webkit-box-shadow: inset 0 0 2px rgb(100, 100, 100); */
+    border-radius: 10px;
+    background-color:rgb(40, 40, 40);
+}
+
+::-webkit-scrollbar-thumb {
+    /* background-color:rgb(130, 0, 190); */
+    background-color:rgb(60, 60, 60);
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 840px) {
+    .rightBar{
+        display: none;
+    }
+    
+    .leftBar{
+        width: 25%;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    .contentDiv{
+        width: 75%;
+        left: 25%;
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .contentDiv{
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom:110px;
+    }
+}
+
+
 /*----------- tracks styles -----------*/
 .trackDiv a{
     color: inherit;
@@ -66,7 +110,7 @@ html, body{
  .trackTable tr td:nth-child(3) {
     padding-left: 20px;
     width: 25%;
-}
+} 
 .trackTable tr td:nth-child(4) {
     padding-left: 20px;
     width: 15%;
@@ -85,4 +129,24 @@ html, body{
 .downloadIcon:hover{
     color:rgb(180, 0, 255);
     cursor: pointer;
+}
+
+@media screen and (max-width: 615px) {
+    .trackDateAdded{
+        display: none;
+    }
+    .trackTable tr td:nth-child(2) {
+        width: 45%;
+        font-size: 14px;
+    }
+     .trackTable tr td:nth-child(3) {
+        width: 45%;
+        font-size: 14px;
+    } 
+}
+
+@media screen and (max-width: 1000px) {
+    .trackUploaderName{
+        display: none;
+    }
 }
