@@ -11,8 +11,8 @@
       <tbody>
         <tr *ngFor="let track of tracks" class="trackDiv" id={{track.trackId}}>
           <!--<td><a (click)="this.trackService.modifyHref(track.url, $event, track.performerName, track.trackName)"><fa-icon [icon]="this.trackService.faArrowAltCircleDown" (mouseover)="this.trackService.downloadIconMouseOver($event)" class="fa-lg downloadIcon"></fa-icon></a></td>-->
-          <td><span>{{track.name}}</span></td>
-          <td><span>{{track.artist}}</span></td>
+          <td><span>{{track.trackName}}</span></td>
+          <td><span>{{track.performerName}}</span></td>
           <td class="trackDetailsIconDiv">
             <div class="trackDetailsIcon dropdown" dropdown (click)="$event.stopPropagation()">
               <a dropdownToggle style="cursor: pointer;">
