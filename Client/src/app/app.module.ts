@@ -16,9 +16,10 @@ import { RightBarComponent } from './rightBar/rightBar.component';
 import { BottomMobileNavComponent } from './bottomMobileNav/bottomMobileNav.component';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { BottomPlayerComponent } from './bottomPlayer/bottomPlayer.component';
+import { AdminGenresComponent } from './admin-genres/admin-genres.component';
 
 @NgModule({
-  declarations: [			
+  declarations: [				
     AppComponent,
     NavComponent,
     HomeComponent,
@@ -26,7 +27,8 @@ import { BottomPlayerComponent } from './bottomPlayer/bottomPlayer.component';
     RightBarComponent,
     BottomMobileNavComponent,
     FileUploaderComponent,
-      BottomPlayerComponent
+      BottomPlayerComponent,
+      AdminGenresComponent
    ],
   imports: [
     BrowserModule,
