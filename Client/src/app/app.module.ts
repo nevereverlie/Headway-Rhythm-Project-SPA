@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FileUploadModule } from 'ng2-file-upload';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown'; 
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,9 +17,11 @@ import { BottomMobileNavComponent } from './bottomMobileNav/bottomMobileNav.comp
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { BottomPlayerComponent } from './bottomPlayer/bottomPlayer.component';
 import { AdminGenresComponent } from './admin-genres/admin-genres.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [				
+  declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
@@ -37,7 +39,9 @@ import { AdminGenresComponent } from './admin-genres/admin-genres.component';
     HttpClientModule,
     FontAwesomeModule,
     FileUploadModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    NgbModule,
+    FormsModule
   ],
   providers: [
     TrackService

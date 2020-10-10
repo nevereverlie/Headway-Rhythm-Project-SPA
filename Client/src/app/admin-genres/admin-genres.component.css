@@ -5,6 +5,30 @@
   margin-top: 5rem;
   text-align: center;
 }
+input {
+  height: 4vh;
+}
+input::-webkit-input-placeholder {
+  color: black;
+  opacity: 1;
+}
+input:disabled {
+  opacity: 1;
+  background-color: aliceblue;
+}
+.updateInput::-webkit-input-placeholder {
+  opacity: 0.5;
+}
+.lockIcon {
+  display: inline-block;
+  position: absolute;
+}
+
+.timesIcon {
+  margin-left: 1rem;
+  display: inline-block;
+  position: fixed;
+}
 
 .container {
   position: relative;
@@ -14,4 +38,15 @@
 }
 .row {
   justify-content: space-evenly;
+}
+
+.dark-modal .modal-content {
+  background-color: #292b2c;
+  color: white;
+}
+.dark-modal .close {
+  color: white;
+}
+.light-blue-backdrop {
+  background-color: #5cb3fd;
 }

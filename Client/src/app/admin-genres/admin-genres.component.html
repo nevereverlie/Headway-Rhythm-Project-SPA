@@ -2,20 +2,46 @@
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">Genre name</th>
+      <th scope="col">Genre name
+        <div class="lockIcon"><i *ngIf="!updateMode" class="fa fa-lock" aria-hidden="true" style="padding-left: 1rem;"></i>
+        <i *ngIf="updateMode" class="fa fa-unlock" aria-hidden="true" style="padding-left: 1rem;"></i></div>
+      </th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let genre of genres">
       <th scope="row">{{genre.genreId}}</th>
-      <td>{{genre.genreName}}</td>
+      <td>
+        <div class="form-group">
+          <div *ngIf="!updateMode; then viewMode else updatingMode"></div>
+            <ng-template #viewMode><input placeholder="{{genre.genreName}}" disabled>
+              <div class="timesIcon"><i class="fa fa-times" style="font-size:36px;color:red;cursor: pointer;" (click)="deleteGenre(genre.genreId)"></i></div></ng-template>
+            <ng-template #updatingMode><input class="updateInput" placeholder="{{genre.genreName}}">
+              <div class="timesIcon"><i class="fa fa-times" style="font-size:36px;color:red;cursor: pointer;" (click)="deleteGenre(genre.genreId)"></i></div></ng-template>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
 <div class="container">
   <div class="row">
-    <button type="button" class="btn btn-outline-success btn-lg">Create</button>
-    <button type="button" class="btn btn-outline-primary btn-lg">Update</button>
-    <button type="button" class="btn btn-outline-danger btn-lg">Delete</button>
+    <button type="button" class="btn btn-outline-success btn-lg" (click)="openVerticallyCentered(content)">Create</button>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Create custom genre</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Enter a name of the new genre: </label>
+        <input style="margin-left: 1rem; width: auto;" [(ngModel)]="genreForCreation.genreName">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-success" (click)="createGenre(genreForCreation); modal.close('Ok click')">Save changes</button>
+      </div>
+    </ng-template>
+    <button type="button" class="btn btn-outline-primary btn-lg" id="BtnUpdate" (click)="changeUpdateMode(); !updateMode ? updateGenres() : ''">{{updateMode ? 'Save changes' : 'Update'}}</button>
   </div>
 </div>
