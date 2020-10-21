@@ -3,3 +3,9 @@
   overflow: visible;
 }
 
+.filterBar {
+  color: white;
+  border-color: aliceblue;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}

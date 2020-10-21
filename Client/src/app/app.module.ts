@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FileUploadModule } from 'ng2-file-upload';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import {MatSelectModule} from '@angular/material/select';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,8 +31,8 @@ import { FormsModule } from '@angular/forms';
     RightBarComponent,
     BottomMobileNavComponent,
     FileUploaderComponent,
-      BottomPlayerComponent,
-      AdminGenresComponent
+    BottomPlayerComponent,
+    AdminGenresComponent
    ],
   imports: [
     BrowserModule,
@@ -41,7 +43,9 @@ import { FormsModule } from '@angular/forms';
     FileUploadModule,
     BsDropdownModule.forRoot(),
     NgbModule,
-    FormsModule
+    FormsModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   providers: [
     TrackService
