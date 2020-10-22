@@ -11,13 +11,25 @@
 }
 
 .genreSelector {
-  background-color: #fff;
   height: 60px;
+  color: #fff;
+}
+
+.genreSelectorLabel {
+  color: #fff;
+}
+
+.dateInput::placeholder {
+  color: #fff;
 }
 
 .dateInput {
-  background-color: #fff;
   margin-left: 2rem;
-  color: black;
   height: 60px;
 }
+
+.dateLabel {
+  color: #fff;
+}
+
+

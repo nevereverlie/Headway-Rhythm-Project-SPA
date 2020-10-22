@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { rejects } from 'assert';
 import { GenreService } from '../_services/genre.service';
 import { TrackService } from '../_services/track.service';
 
@@ -72,6 +71,13 @@ export class HomeComponent implements OnInit {
         }
       });
     });
+  }
+
+  removeFilters(): void {
+    this.getTracks();
+    this.firstDate = undefined;
+    this.secondDate = undefined;
+    this.selectedGenre = undefined;
   }
 
   private filterByGenreAndYear(track: any, filteredTracks: any[]): void {
