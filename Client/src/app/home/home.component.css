@@ -9,3 +9,15 @@
   margin-left: 2rem;
   margin-top: 2rem;
 }
+
+.genreSelector {
+  background-color: #fff;
+  height: 60px;
+}
+
+.dateInput {
+  background-color: #fff;
+  margin-left: 2rem;
+  color: black;
+  height: 60px;
+}

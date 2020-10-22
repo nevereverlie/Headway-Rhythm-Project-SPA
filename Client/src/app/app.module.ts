@@ -5,6 +5,9 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
+import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,7 +48,9 @@ import { FormsModule } from '@angular/forms';
     NgbModule,
     FormsModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule
   ],
   providers: [
     TrackService
