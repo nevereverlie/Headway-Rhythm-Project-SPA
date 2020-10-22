@@ -1,8 +1,8 @@
 <div class="contentDiv">
   <div class="filterBar">
     <h4>Filters:</h4>
-    <mat-form-field class="genreSelector" appearance="fill">
-      <mat-label>Genre</mat-label>
+    <mat-form-field appearance="fill">
+      <mat-label class="genreSelectorLabel">Genre</mat-label>
       <mat-select [(ngModel)]="selectedGenre">
         <mat-option *ngFor="let genre of genres" [value]="genre.genreName">
           {{genre.genreName}}
@@ -10,20 +10,21 @@
       </mat-select>
     </mat-form-field>
     <mat-form-field class="dateInput">
-      <mat-label>First date</mat-label>
+      <mat-label class="dateLabel">First date</mat-label>
       <input matInput type="text" [(ngModel)]="firstDate">
       <button mat-button *ngIf="firstDate" matSuffix mat-icon-button aria-label="Clear" (click)="firstDate=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
     <mat-form-field class="dateInput">
-      <mat-label>Second date</mat-label>
+      <mat-label class="dateLabel">Second date</mat-label>
       <input matInput type="text" [(ngModel)]="secondDate">
       <button mat-button *ngIf="secondDate" matSuffix mat-icon-button aria-label="Clear" (click)="secondDate=''">
         <mat-icon>close</mat-icon>
       </button>
     </mat-form-field>
     <button mat-raised-button color="primary" style="margin-left: 1rem;" (click)="applyFilters()">Apply filters</button>
+    <button mat-raised-button color="accent" style="margin-left: 1rem;" (click)="removeFilters()">Clear filters</button>
   </div>
 
   <div class="text-center mt-3">
