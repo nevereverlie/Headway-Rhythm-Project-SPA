@@ -52,7 +52,7 @@ import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.co
     BsDropdownModule.forRoot(),
     NgbModule,
     FormsModule,
-    ProfileModule
+    ProfileModule,
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
