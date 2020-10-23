@@ -1,0 +1,75 @@
+
+img{
+    object-fit: cover;
+    width: 120px;
+    height:120px;
+    border-radius: 10%;
+    margin: 10px;
+    margin-top: 15px;
+    border: 5px solid rgb(230, 230, 230);
+}
+.imageDiv{
+    width: 90%;
+    background: rgb(40, 40, 40);
+    margin: auto;
+    text-align: center;
+    border-radius: 40px;
+}
+.imageSpanDiv{
+    color: rgb(230, 230, 230);
+    font-size: 23px;
+    font-weight: 500;
+    padding-bottom: 10px;
+}
+
+.formSubmitButton{
+    width: 60%;
+    margin-left: 20%;
+    height: 40px;
+    margin-top: 15px;
+    background-color: rgb(130, 0, 190);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+.formSubmitButton:hover{
+    background-color: rgb(180, 0, 255);
+}
+
+.formCancelButton{
+    width: 60%;
+    margin-left: 20%;
+    height: 40px;
+    margin-top: 15px;
+    background-color: rgb(180,180,180);
+    color: rgb(25,25,25);;
+    border: none;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.formCancelButton:hover{
+    background-color: rgb(230,230,230);
+}
+
+.headerSpanDiv{
+    color: white; 
+    font-size: 28px;
+    text-align: center;
+    margin: 10px;
+}
+
+table{
+    margin: auto;
+}
+tr{
+    height: 60px;
+    color: rgb(230,230,230);
+    font-size: 24px;
+    font-weight: 400;
+    user-select: none;
+}
+td{
+    padding-right: 30px;
+}

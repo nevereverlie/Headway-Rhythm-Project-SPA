@@ -32,6 +32,9 @@ export class TrackService {
     return this.http.get('http://localhost:5001/api/tracks');
   }
 
+  getTracksBySearchString(input: string) {
+    return this.http.get('http://localhost:5001/api/tracks/search/' + input);
+  }
 
   setActiveTrack(track: any) {
     if (this.activeTrack === track){

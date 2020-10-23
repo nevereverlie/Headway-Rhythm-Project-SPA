@@ -9,7 +9,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 
 
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, SearchResolver } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,9 +24,12 @@ import { BottomPlayerComponent } from './bottomPlayer/bottomPlayer.component';
 import { AdminGenresComponent } from './admin-genres/admin-genres.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './search/search.component';
+import { ProfileModule } from './profile/profile.module';
+import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.component';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavComponent,
     HomeComponent,
@@ -35,10 +38,12 @@ import { FormsModule } from '@angular/forms';
     BottomMobileNavComponent,
     FileUploaderComponent,
     BottomPlayerComponent,
-    AdminGenresComponent
+    AdminGenresComponent,
+    SearchComponent
    ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -47,13 +52,15 @@ import { FormsModule } from '@angular/forms';
     BsDropdownModule.forRoot(),
     NgbModule,
     FormsModule,
+    ProfileModule
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
     MatIconModule
   ],
   providers: [
-    TrackService
+    TrackService,
+    SearchResolver
   ],
   bootstrap: [AppComponent]
 })
