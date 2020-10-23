@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   getTracks() {
     this.trackService.getTracks().subscribe(response => {
       this.tracks = response;
-      console.log(this.tracks);
+      //console.log(this.tracks);
     }, error => {
       console.log(error);
     });

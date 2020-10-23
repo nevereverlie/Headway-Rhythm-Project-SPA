@@ -1,0 +1,32 @@
+<div class="contentDiv">
+  <div class="headerSpanDiv">
+    <span>Profile update</span>
+  </div>
+  <div class="imageDiv">
+    <img src={{userToSend.photoUrl}}>
+    <br/>
+    <div class="imageSpanDiv"><span>{{userToSend.username}}</span></div>
+  </div>
+  <br/>
+  <form #updateProfileForm="ngForm" class="loginForm" (ngSubmit)="updateProfile()">
+    <table>
+      <tr>
+        <td><span>Username: </span></td>
+        <td><input name="Username" type="text" placeholder="Username"
+          required [(ngModel)]="userToSend.username"></td>
+      </tr>
+      
+      <tr>
+        <td><span >Description: </span></td>
+        <td><input name="Description" type="text" placeholder="Description" 
+            required [(ngModel)]="userToSend.description"></td>
+      </tr>
+      <tr>
+        <td><input name="File" type="file" class="fileInput" [(ngModel)]="userToSend.file"
+        (change)="onFileSelect($event)"></td>
+      </tr>
+    </table>
+    <button class="formSubmitButton" type="submit">Submit</button>
+    <button class="formCancelButton" (click)="cancelButtonClick()">Cancel</button>
+  </form>
+</div>

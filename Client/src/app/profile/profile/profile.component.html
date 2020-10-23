@@ -1,0 +1,27 @@
+<div class="contentDiv">
+  <div class="headerSpanDiv">
+    <span>Profile</span>
+  </div>
+  
+  <div class="imageDiv">
+    <img src={{user.photoUrl}}>
+    <br/>
+    <div class="imageSpanDiv"><span>{{user.username}}</span></div>
+  </div>
+  <br/>
+  <table>
+    <tr>
+      <td><span>Username: </span></td>
+      <td><span>{{user.username}}</span></td>
+    </tr>
+    <!-- <br/> -->
+    <tr>
+      <td><span>Description: </span></td>
+      <td><span>{{user.description}}</span></td>
+    </tr>
+  </table>
+  <!-- <button class="formSubmitButton"> -->
+    <a [routerLink]="['update']" class="formSubmitButton">Update profile</a>
+  <!-- </button> -->
+  <router-outlet></router-outlet>
+</div>
