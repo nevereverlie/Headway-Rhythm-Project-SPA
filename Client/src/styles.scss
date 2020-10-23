@@ -1,4 +1,13 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import '~@angular/material/theming';
+@include mat-core();
+
+$app-primary: mat-palette($mat-deep-purple);
+$app-accent: mat-palette($mat-amber, A200, A100, A400);
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@include angular-material-theme($app-theme);
 
 html, body{
     background-color: rgb(25, 25, 25) !important;
@@ -149,3 +158,6 @@ html, body{
         display: none;
     }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

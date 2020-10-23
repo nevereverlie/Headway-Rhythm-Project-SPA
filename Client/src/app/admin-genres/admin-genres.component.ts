@@ -77,22 +77,28 @@ export class AdminGenresComponent implements OnInit {
   }
 
   updateGenres() {
+    let isChanging = Boolean(false);
     const inputs = document.getElementsByTagName('input');
+
     for (let index = 0; index < inputs.length - 1; index++) {
       if (inputs[index + 1].value.toString() !== "") {
+        isChanging = true;
         this.genresForUpdate[index].genreName = inputs[index + 1].value.toString();
       }
     }
-    for (let i = 0; i < this.genres.length; i++) {
-      if (this.genres[i].genreName !== this.genresForUpdate[i].genreName) {
-        const newGenre = this.genresForUpdate[i];
-        this.genreService.updateGenre(newGenre).subscribe(() => { }, error => {
-          console.log(error);
-        });
+
+    if (isChanging) {
+      for (let i = 0; i < this.genres.length; i++) {
+        if (this.genres[i].genreName !== this.genresForUpdate[i].genreName) {
+          const newGenre = this.genresForUpdate[i];
+          this.genreService.updateGenre(newGenre).subscribe(() => { }, error => {
+            console.log(error);
+          });
+        }
       }
+      alert('Update successfull');
+      this.getGenres();
     }
-    alert('Update successfull');
-    this.getGenres();
   }
 
   deleteGenre(genreToDelete) {

@@ -3,3 +3,33 @@
   overflow: visible;
 }
 
+.filterBar {
+  color: white;
+  border-color: aliceblue;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+.genreSelector {
+  height: 60px;
+  color: #fff;
+}
+
+.genreSelectorLabel {
+  color: #fff;
+}
+
+.dateInput::placeholder {
+  color: #fff;
+}
+
+.dateInput {
+  margin-left: 2rem;
+  height: 60px;
+}
+
+.dateLabel {
+  color: #fff;
+}
+
+
