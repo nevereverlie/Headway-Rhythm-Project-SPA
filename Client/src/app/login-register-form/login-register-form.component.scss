@@ -89,6 +89,18 @@
     background-color: rgb(180, 0, 255);
 }
 
+.googleBtn {
+  width: 60%;
+  margin-left: 20%;
+  height: 40px;
+  margin-top: 10%;
+  background-color: #8200be;
+  color: white;
+  border: none;
+  border-radius: 0%;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 650px) {
     .loginFormInside{
         width: 100%;

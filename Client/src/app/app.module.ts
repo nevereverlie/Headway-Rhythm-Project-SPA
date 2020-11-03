@@ -8,7 +8,10 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 
-
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import {
+  GoogleLoginProvider
+} from 'angularx-social-login';
 import { AppRoutingModule, SearchResolver } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -26,12 +29,15 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { ProfileModule } from './profile/profile.module';
-import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.component';
 import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
 import { AuthService } from './_services/auth.service';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
 @NgModule({
-  declarations: [		
+  declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
@@ -42,7 +48,7 @@ import { AuthService } from './_services/auth.service';
     BottomPlayerComponent,
     AdminGenresComponent,
     SearchComponent,
-      LoginRegisterFormComponent
+    LoginRegisterFormComponent
    ],
   imports: [
     BrowserModule,
@@ -52,6 +58,7 @@ import { AuthService } from './_services/auth.service';
     HttpClientModule,
     FontAwesomeModule,
     FileUploadModule,
+    SocialLoginModule,
     BsDropdownModule.forRoot(),
     NgbModule,
     FormsModule,
@@ -64,6 +71,20 @@ import { AuthService } from './_services/auth.service';
   providers: [
     TrackService,
     SearchResolver,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '802554202444-km7ba5p0tssq4nm9j0mibcvadiv3iens.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    },
     AuthService
   ],
   bootstrap: [AppComponent]
