@@ -17,7 +17,7 @@
           aria-label="Search" (keyup)="searchInputKeyUpListener($event)">
       </form>
     </div>
-    
+
     <!--Login-->
     <div *ngIf="!loggedIn()" class="loginButtonDiv" [routerLink]="['login']">
       <span>Login<fa-icon [icon]="faSignInAlt" class="ml-2"></fa-icon></span>
@@ -25,7 +25,7 @@
 
     <div *ngIf="loggedIn()" class="dropdown loggedUserDropdown" dropdown>
       <a class="dropdown-toggle text-light loggedUserText" dropdownToggle>
-        Welcome, {{authService.decodedToken?.unique_name}}
+        Welcome, {{authService.decodedToken?.given_name || authService.decodedToken?.unique_name | titlecase}}
       </a>
 
       <div class="dropdown-menu mt-1" *dropdownMenu>

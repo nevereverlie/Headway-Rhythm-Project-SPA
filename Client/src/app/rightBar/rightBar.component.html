@@ -2,7 +2,7 @@
   <div class="rightBarUpperDiv">
     <img src="https://growupsales.com/wp-content/uploads/2019/09/rockstar.jpg">
     <div>
-      <div class="genreOftheDaySpan"><span>{{genres[0].genreName}}</span></div>
+      <div class="genreOftheDaySpan"><span>{{genres[0]?.genreName}}</span></div>
       <div class="genreOfTheDayInfoSpan"><span>Genre of the day</span></div>
     </div>
   </div>
@@ -11,7 +11,7 @@
       <span>GENRES</span>
     </div>
     <div class="genreDiv" *ngFor="let genre of genres">
-      <span>{{genre.genreName}}</span>
+      <span>{{genre?.genreName}}</span>
     </div>
   </div>
 </div>

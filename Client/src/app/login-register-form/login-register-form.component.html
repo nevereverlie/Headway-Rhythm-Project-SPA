@@ -1,8 +1,8 @@
 <div class="contentDiv"></div>
 <div class="loginFormMainDiv">
   <div class="loginFormInside">
-  
-    
+
+
     <div *ngIf="!registerMode">
       <div class="closeIconDiv" >
         <fa-icon [icon]="faTimes" (click)="back()"></fa-icon>
@@ -12,13 +12,16 @@
       </div>
 
       <form #loginForm="ngForm" class="loginForm" (ngSubmit)="login()">
-        <input class="loginFormInput" type="text" name="username" 
+        <input class="loginFormInput" type="text" name="username"
           placeholder="Username" required [(ngModel)]="model.username">
-        <input class="loginFormInput" type="password" name="password" 
+        <input class="loginFormInput" type="password" name="password"
           placeholder="Password" required [(ngModel)]="model.password">
+        <button mat-stroked-button color="primary" type="button" class="googleBtn" (click)="signInWithGoogle()">
+          <i class="fa fa-google fa-lg" aria-hidden="true"></i><span style="text-align: center; padding: 1rem">Sign in with Google</span>
+        </button>
         <button [disabled]="!loginForm.valid" class="formSubmitButton" type="submit">Login</button>
       </form>
-      
+
       <div class="registerDiv" (click)="enableRegisterMode()">
         <span>Sign Up</span>
       </div>
@@ -32,9 +35,9 @@
       </div>
       <div class="signInDiv">Sign Up</div>
       <form #registerForm="ngForm" class="loginForm" (ngSubmit)="register()">
-          <input type="text" class="loginFormInput" required name="username" 
+          <input type="text" class="loginFormInput" required name="username"
            [(ngModel)]="model.username" placeholder="Username">
-          <input type="password" class="loginFormInput" required name="password" 
+          <input type="password" class="loginFormInput" required name="password"
             [(ngModel)]="model.password" placeholder="Password">
           <button class="formSubmitButton" type="submit">Register</button>
       </form>

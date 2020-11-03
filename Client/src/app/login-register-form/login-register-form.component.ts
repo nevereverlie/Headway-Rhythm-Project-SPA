@@ -15,7 +15,7 @@ export class LoginRegisterFormComponent implements OnInit {
 
   model: any = {};
   registerMode: boolean = false;
-  constructor(private authService: AuthService, 
+  constructor(private authService: AuthService,
     private router: Router,  private location: Location) { }
 
   ngOnInit() {
@@ -43,6 +43,11 @@ export class LoginRegisterFormComponent implements OnInit {
     }, error => {
       console.log(error);
     });
+  }
+
+  async signInWithGoogle() {
+    await this.authService.signinWithGoogle();
+    this.back();
   }
 
   enableRegisterMode() {
