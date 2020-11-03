@@ -8,7 +8,12 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 
-
+import {
+  SocialLoginModule,
+  SocialAuthServiceConfig,
+  GoogleLoginProvider,
+  SocialAuthService
+} from 'angularx-social-login';
 import { AppRoutingModule, SearchResolver } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
@@ -29,7 +34,7 @@ import { ProfileModule } from './profile/profile.module';
 import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [
     AppComponent,
     NavComponent,
     HomeComponent,
@@ -49,6 +54,7 @@ import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.co
     HttpClientModule,
     FontAwesomeModule,
     FileUploadModule,
+    SocialLoginModule,
     BsDropdownModule.forRoot(),
     NgbModule,
     FormsModule,
@@ -60,7 +66,8 @@ import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.co
   ],
   providers: [
     TrackService,
-    SearchResolver
+    SearchResolver,
+    SocialAuthService
   ],
   bootstrap: [AppComponent]
 })
