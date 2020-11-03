@@ -32,9 +32,11 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { ProfileModule } from './profile/profile.module';
 import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.component';
+import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
+import { AuthService } from './_services/auth.service';
 
 @NgModule({
-  declarations: [
+  declarations: [	
     AppComponent,
     NavComponent,
     HomeComponent,
@@ -44,7 +46,8 @@ import { ProfileUpdateComponent } from './profile/profileUpdate/profileUpdate.co
     FileUploaderComponent,
     BottomPlayerComponent,
     AdminGenresComponent,
-    SearchComponent
+    SearchComponent,
+      LoginRegisterFormComponent
    ],
   imports: [
     BrowserModule,

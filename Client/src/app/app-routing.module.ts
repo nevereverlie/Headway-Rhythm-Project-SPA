@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { TrackService } from './_services/track.service';
 import { catchError } from 'rxjs/operators';
+import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
 
 
 @Injectable()
@@ -26,6 +27,7 @@ export class SearchResolver implements Resolve<any> {
 
 export const routes: Routes = [
   {path: '', component: HomeComponent},
+  {path: 'login', component: LoginRegisterFormComponent},
   {path: 'upload', component: FileUploaderComponent},
   {path: 'genres', component: AdminGenresComponent},
   {path: 'search/:inputString', component: SearchComponent,

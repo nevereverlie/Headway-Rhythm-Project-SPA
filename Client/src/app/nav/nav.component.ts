@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { faChevronLeft, faChevronRight, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { AuthService } from '../_services/auth.service';
 import { TrackService } from '../_services/track.service';
 
 @Component({
@@ -8,10 +10,24 @@ import { TrackService } from '../_services/track.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  model: any = localStorage.getItem('username');
+  faChevronLeft = faChevronLeft;
+  faChevronRight = faChevronRight;
+  faSignInAlt = faSignInAlt;
 
-  constructor(public trackService: TrackService, private router: Router) { }
+  constructor(public trackService: TrackService, private router: Router,
+    public authService: AuthService) { }
 
   ngOnInit() {
+  }
+
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/home']);
+  }
+
+  loggedIn() {
+    return this.authService.loggedIn();
   }
 
   searchInputKeyUpListener(event: any) {
