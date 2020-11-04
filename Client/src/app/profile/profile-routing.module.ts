@@ -10,36 +10,40 @@ import { ProfileUpdateComponent } from './profileUpdate/profileUpdate.component'
 @Injectable()
 export class ProfileResolver implements Resolve<any> {
     constructor(private profileService: ProfileService,
-        private router: Router) {}
+                private router: Router) {}
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
-        return this.profileService.getUser().pipe(
+        return this.profileService.getUser(+route.paramMap.get('userId')).pipe(
             catchError(error => {
                 this.router.navigate(['']);
-                console.log('error');
+                console.log(error);
                 return of(null);
             })
         );
     }
 }
 
+/*@Injectable()
+export class ProfileUpdateResolver implements Resolve<any> {
+    constructor(private profileService: ProfileService,
+                private router: Router) {}
+    resolve(route: ActivatedRouteSnapshot): Observable<any> {
+        return this.profileService.updateProfile(route.data['profile']).pipe(
+            catchError(error => {
+                this.router.navigate(['']);
+                console.log(error);
+                return of(null);
+            })
+        );
+    }
+}*/
 
-
-// const profileRoutes: Routes = [
-//   {path: 'profile', component: ProfileComponent,
-//     children:[
-//       {path: 'update', component: ProfileUpdateComponent, 
-//         resolve: {data: ProfileResolver}},
-//     ],
-//     resolve: {data: ProfileResolver}
-//   }
-// ];
 const profileRoutes: Routes = [
-  {path: 'profile', component: ProfileComponent,
-    resolve: {data: ProfileResolver}
+  {path: 'profile/:userId', component: ProfileComponent,
+    resolve: {profile: ProfileResolver}
   },
-  {path: 'profile/update', component: ProfileUpdateComponent, 
-        resolve: {data: ProfileResolver}
-  }
+  {path: 'profile/:userId/update', component: ProfileUpdateComponent},
+  //   resolve: {profile: ProfileUpdateResolver}
+  // }
 ];
 
 @NgModule({

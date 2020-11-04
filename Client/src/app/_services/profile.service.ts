@@ -8,8 +8,8 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  getUser() {
-    return this.http.get('http://localhost:5001/api/user/1');
+  getUser(userId: number) {
+    return this.http.get('http://localhost:5001/api/user/' + userId);
   }
 
   updateProfile(userToSend: any){

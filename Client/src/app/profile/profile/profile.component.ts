@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/_services/auth.service';
 import { ProfileService } from 'src/app/_services/profile.service';
 
 @Component({
@@ -9,20 +10,22 @@ import { ProfileService } from 'src/app/_services/profile.service';
 })
 export class ProfileComponent implements OnInit {
   user: any;
+  userId: number;
 
-  constructor(private route: ActivatedRoute, public profileService: ProfileService) { }
+  constructor(private route: ActivatedRoute, public profileService: ProfileService, private authService: AuthService) { }
 
   ngOnInit() {
-    //this.getUser();
-    this.route.data.subscribe(response => {
-      this.user = response.data;
+    this.userId = +this.authService.decodedToken.nameid;
+    this.route.data.subscribe(data => {
+      this.user = data.profile;
     }, error => {
       console.log(error);
     });
   }
 
   getUser() {
-    this.profileService.getUser().subscribe(response => {
+    console.log(this.userId);
+    this.profileService.getUser(this.userId).subscribe(response => {
       this.user = response;
       console.log(this.user);
     }, error => {

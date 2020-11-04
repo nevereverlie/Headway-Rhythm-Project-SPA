@@ -13,7 +13,7 @@ import { LoginRegisterFormComponent } from './login-register-form/login-register
 @Injectable()
 export class SearchResolver implements Resolve<any> {
     constructor(private trackService: TrackService,
-        private router: Router) {}
+                private router: Router) {}
     resolve(route: ActivatedRouteSnapshot): Observable<any> {
         return this.trackService.getTracksBySearchString(route.paramMap.get('inputString')).pipe(
             catchError(error => {

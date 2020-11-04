@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/_services/auth.service';
 import { ProfileService } from 'src/app/_services/profile.service';
 
 @Component({
@@ -8,20 +9,23 @@ import { ProfileService } from 'src/app/_services/profile.service';
   styleUrls: ['./profileUpdate.component.scss', '../profileStyles.scss']
 })
 export class ProfileUpdateComponent implements OnInit {
-
+  userId: number;
   user: any = {};
   userToSend: any = {};
   file: File;
-  constructor(public profileService: ProfileService, private router: Router) { }
+  constructor(public profileService: ProfileService,
+              private router: Router,
+              public authService: AuthService) { }
 
   ngOnInit() {
+    console.log(this.authService.decodedToken);
+    this.userId = +this.authService.decodedToken.nameid;
     this.getUser();
   }
 
   getUser() {
-    this.profileService.getUser().subscribe(response => {
+    this.profileService.getUser(this.userId).subscribe(response => {
       this.userToSend = response;
-      //console.log(this.userToSend);
     }, error => {
       console.log(error);
     });
@@ -36,14 +40,13 @@ export class ProfileUpdateComponent implements OnInit {
   }
 
   method(){
-    //console.log(this.userToSend);
     console.log(this.file);
   }
 
   updateProfile(){
-    let form = new FormData();
+    const form = new FormData();
     form.append('UserId', this.userToSend.userId);
-    form.append('Username', this.userToSend.username);
+    form.append('Username', this.userToSend.username.toLowerCase());
     form.append('Description', this.userToSend.description);
     form.append('File', this.file);
     this.profileService.updateProfile(form).subscribe(response => {
@@ -51,11 +54,11 @@ export class ProfileUpdateComponent implements OnInit {
     }, error => {
      console.log('Failed');
     }, () => {
-      this.router.navigate(['/profile']);
+      this.router.navigate([`/profile/${this.userId}`]);
     });
   }
 
   cancelButtonClick(){
-    this.router.navigate(['/profile']);
+    this.router.navigate([`/profile/${this.userId}`]);
   }
 }
