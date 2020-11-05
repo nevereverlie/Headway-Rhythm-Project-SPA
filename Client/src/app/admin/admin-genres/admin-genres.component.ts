@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
-import { GenreService } from '../_services/genre.service';
+import { GenreService } from '../../_services/genre.service';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Genre} from '../models/Genre';
+import {Genre} from '../../models/Genre';
 
 @Component({
   selector: 'app-admin-genres',

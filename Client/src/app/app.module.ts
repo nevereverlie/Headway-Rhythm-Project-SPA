@@ -24,7 +24,8 @@ import { RightBarComponent } from './rightBar/rightBar.component';
 import { BottomMobileNavComponent } from './bottomMobileNav/bottomMobileNav.component';
 import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { BottomPlayerComponent } from './bottomPlayer/bottomPlayer.component';
-import { AdminGenresComponent } from './admin-genres/admin-genres.component';
+import { AdminGenresComponent } from './admin/admin-genres/admin-genres.component';
+import { AdminProfilesComponent } from './admin/admin-profiles/admin-profiles.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
@@ -48,7 +49,8 @@ export function tokenGetter() {
     BottomPlayerComponent,
     AdminGenresComponent,
     SearchComponent,
-    LoginRegisterFormComponent
+    LoginRegisterFormComponent,
+    AdminProfilesComponent
    ],
   imports: [
     BrowserModule,

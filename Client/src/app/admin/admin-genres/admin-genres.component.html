@@ -11,7 +11,7 @@
   <tbody>
     <tr *ngFor="let genre of genres">
       <th scope="row">{{genre.genreId}}</th>
-      <td>
+      <td style="width: 100%;">
         <div class="form-group">
           <div *ngIf="!updateMode; then viewMode else updatingMode"></div>
             <ng-template #viewMode><input placeholder="{{genre.genreName}}" disabled>
@@ -45,3 +45,5 @@
     <button type="button" class="btn btn-outline-primary btn-lg" id="BtnUpdate" (click)="changeUpdateMode(); !updateMode ? updateGenres() : ''">{{updateMode ? 'Save changes' : 'Update'}}</button>
   </div>
 </div>
+
+<app-admin-profiles></app-admin-profiles>
