@@ -8,23 +8,23 @@ import { Genre } from '../models/Genre';
 })
 export class GenreService {
 
-constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-getGenres(): Observable<Genre[]> {
-  return this.http.get<Genre[]>('http://localhost:5001/api/genres');
-}
+  getGenres(): Observable<Genre[]> {
+    return this.http.get<Genre[]>('http://localhost:5001/api/genres');
+  }
 
-createGenre(genreForCreation: Genre) {
-  console.log(typeof(genreForCreation));
-  return this.http.post<Genre>('http://localhost:5001/api/genres/create', genreForCreation);
-}
+  createGenre(genreForCreation: Genre) {
+    console.log(typeof(genreForCreation));
+    return this.http.post<Genre>('http://localhost:5001/api/genres/create', genreForCreation);
+  }
 
-updateGenre(genreForUpdate: Genre) {
-  return this.http.put<Genre>('http://localhost:5001/api/genres/update', genreForUpdate);
-}
+  updateGenre(genreForUpdate: Genre) {
+    return this.http.put<Genre>('http://localhost:5001/api/genres/update', genreForUpdate);
+  }
 
-deleteGenre(id: number) {
-  return this.http.delete('http://localhost:5001/api/genres/delete/' + id);
-}
+  deleteGenre(id: number) {
+    return this.http.delete('http://localhost:5001/api/genres/delete/' + id);
+  }
 
 }

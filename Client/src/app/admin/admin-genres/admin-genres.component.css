@@ -4,6 +4,9 @@
   margin: auto;
   margin-top: 5rem;
   text-align: center;
+  display: block;
+  height: 300px;
+  overflow-y: auto;
 }
 input {
   height: 4vh;
@@ -27,7 +30,7 @@ input:disabled {
 .timesIcon {
   margin-left: 1rem;
   display: inline-block;
-  position: fixed;
+  position: absolute;
 }
 
 .container {
