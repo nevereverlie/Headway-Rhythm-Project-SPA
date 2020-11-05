@@ -50,6 +50,7 @@ export class AdminProfilesComponent implements OnInit {
   getUsers() {
     this.usersService.getUsers().subscribe(response => {
       this.users = response;
+      console.log(this.users);
     });
   }
   getUsersForUpdate() {
@@ -63,24 +64,26 @@ export class AdminProfilesComponent implements OnInit {
     try {
       const div = document.getElementById('form');
       const inputs = div.getElementsByTagName('input');
-      console.log(inputs);
+
+      const descInputs = document.getElementsByName('descInput') as unknown as HTMLInputElement;
 
       for (let index = 0; index < inputs.length; index++) {
         if (inputs[index].value.toString() !== "") {
           isChanging = true;
           this.usersForUpdate[index].username = inputs[index].value.toString();
-          console.log(this.usersForUpdate);
+          this.usersForUpdate[index].description = descInputs[index].value.toString();
         }
       }
 
       if (isChanging) {
         for (let i = 0; i < this.users.length; i++) {
-          if (this.users[i].genreName !== this.usersForUpdate[i].username) {
+          if (this.users[i].username !== this.usersForUpdate[i].username) {
             const newUser = this.usersForUpdate[i];
             console.log(newUser);
             const form = new FormData();
             form.append('UserId', newUser.userId);
             form.append('Username', newUser.username.toLowerCase());
+            form.append('Description', newUser.description);
             this.usersService.updateProfile(form).subscribe(() => { }, error => {
               console.log(error);
             });
