@@ -62,22 +62,26 @@ export class AdminProfilesComponent implements OnInit {
   updateProfiles() {
     let isChanging = Boolean(false);
     try {
-      const div = document.getElementById('form');
-      const inputs = div.getElementsByTagName('input');
+      const nameInputs = document.getElementsByName('nameInput') as unknown as HTMLInputElement;
+      const nameInputsLength = document.getElementsByName('nameInput').length;
+      console.log(nameInputs);
+      const descnameInputs = document.getElementsByName('descInput') as unknown as HTMLInputElement;
 
-      const descInputs = document.getElementsByName('descInput') as unknown as HTMLInputElement;
-
-      for (let index = 0; index < inputs.length; index++) {
-        if (inputs[index].value.toString() !== "") {
+      for (let index = 0; index < nameInputsLength; index++) {
+        if (nameInputs[index].value.toString() !== '') {
           isChanging = true;
-          this.usersForUpdate[index].username = inputs[index].value.toString();
-          this.usersForUpdate[index].description = descInputs[index].value.toString();
+          this.usersForUpdate[index].username = nameInputs[index].value.toString();
+        }
+        if (descnameInputs[index].value.toString() !== '') {
+          isChanging = true;
+          this.usersForUpdate[index].description = descnameInputs[index].value.toString();
         }
       }
 
       if (isChanging) {
         for (let i = 0; i < this.users.length; i++) {
-          if (this.users[i].username !== this.usersForUpdate[i].username) {
+          if (this.users[i].username !== this.usersForUpdate[i].username ||
+              this.users[i].description !== this.usersForUpdate[i].description) {
             const newUser = this.usersForUpdate[i];
             console.log(newUser);
             const form = new FormData();

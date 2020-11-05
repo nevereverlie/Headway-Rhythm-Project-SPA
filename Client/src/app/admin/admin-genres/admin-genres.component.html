@@ -1,4 +1,4 @@
-<table class="table table-striped table-dark">
+<table class="table admin-table table-striped table-dark">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -14,9 +14,9 @@
       <td style="width: 100%;">
         <div class="form-group">
           <div *ngIf="!updateMode; then viewMode else updatingMode"></div>
-            <ng-template #viewMode><input placeholder="{{genre.genreName}}" disabled>
+            <ng-template #viewMode><input name="genreInput" placeholder="{{genre.genreName}}" disabled>
               <div class="timesIcon"><i class="fa fa-times" style="font-size:36px;color:red;cursor: pointer;" (click)="deleteGenre(genre.genreId)"></i></div></ng-template>
-            <ng-template #updatingMode><input class="updateInput" placeholder="{{genre.genreName}}">
+            <ng-template #updatingMode><input name="genreInput" class="updateInput" placeholder="{{genre.genreName}}">
               <div class="timesIcon"><i class="fa fa-times" style="font-size:36px;color:red;cursor: pointer;" (click)="deleteGenre(genre.genreId)"></i></div></ng-template>
         </div>
       </td>

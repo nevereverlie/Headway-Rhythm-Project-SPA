@@ -31,11 +31,11 @@ export class TrackService {
   constructor(private http: HttpClient) { }
 
   getTracks() {
-    return this.http.get(this.baseUrl + '/tracks');
+    return this.http.get(this.baseUrl + 'tracks');
   }
 
   getTracksBySearchString(input: string) {
-    return this.http.get(this.baseUrl + '/tracks/search/' + input);
+    return this.http.get(this.baseUrl + 'tracks/search/' + input);
   }
 
   setActiveTrack(track: any) {

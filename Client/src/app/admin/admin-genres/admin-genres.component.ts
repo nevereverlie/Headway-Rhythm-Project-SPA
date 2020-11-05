@@ -78,12 +78,14 @@ export class AdminGenresComponent implements OnInit {
 
   updateGenres() {
     let isChanging = Boolean(false);
-    const inputs = document.getElementsByTagName('input');
+    const inputsLength = document.getElementsByName('genreInput').length;
+    const inputs = document.getElementsByName('genreInput') as unknown as HTMLInputElement;
+    console.log(inputs);
 
-    for (let index = 0; index < inputs.length - 1; index++) {
-      if (inputs[index + 1].value.toString() !== "") {
+    for (let index = 0; index < inputsLength; index++) {
+      if (inputs[index].value.toString() !== "") {
         isChanging = true;
-        this.genresForUpdate[index].genreName = inputs[index + 1].value.toString();
+        this.genresForUpdate[index].genreName = inputs[index].value.toString();
       }
     }
 
