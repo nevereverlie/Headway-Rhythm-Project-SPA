@@ -3,12 +3,13 @@ import { Injectable } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { map } from 'rxjs/operators';
 import { SocialAuthService, GoogleLoginProvider } from 'angularx-social-login';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  baseUrl = 'http://localhost:5001/api/auth/';
+  baseUrl = environment.apiUrl + 'auth/';
   loginMode: boolean = false;
   jwtHelper = new JwtHelperService();
   decodedToken: any;

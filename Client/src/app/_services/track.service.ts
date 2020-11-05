@@ -7,11 +7,13 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrackService {
+  baseUrl = environment.apiUrl;
   activeTrack: any;
   activeTrackUpdated: EventEmitter<any> = new EventEmitter();
   pauseTrack: EventEmitter<any> = new EventEmitter();
@@ -29,11 +31,11 @@ export class TrackService {
   constructor(private http: HttpClient) { }
 
   getTracks() {
-    return this.http.get('http://localhost:5001/api/tracks');
+    return this.http.get(this.baseUrl + '/tracks');
   }
 
   getTracksBySearchString(input: string) {
-    return this.http.get('http://localhost:5001/api/tracks/search/' + input);
+    return this.http.get(this.baseUrl + '/tracks/search/' + input);
   }
 
   setActiveTrack(track: any) {
