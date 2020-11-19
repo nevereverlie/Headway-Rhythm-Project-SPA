@@ -11,7 +11,7 @@
       </tr>
 
       <tr>
-        <a [routerLink]="['/upload']">
+        <a [routerLink]="['/library/playlists']">
           <td><fa-icon [icon]="faCompactDisc"></fa-icon></td>
           <td><span>Library</span></td>
         </a>
@@ -45,8 +45,20 @@
       <div class="playlistDiv">
         <span class="playlistSpan">Classic rock</span>
       </div>
+
+      <div class="userPlaylistsDiv" *ngIf="this.authService.loggedIn()">
+        <div class="infospanDiv mt-3">
+          <span class="info-span">YOUR PLAYLISTS</span>
+        </div>
+        <div class="playlistDiv" *ngFor="let playlist of playlists" [routerLink]="['/library/playlists', playlist.playlistId]">
+          <span class="playlistSpan">{{playlist.playlistName}}</span>
+        </div>
+      </div>
+
     </div>
   </div>
+
+  
 
   <div class="leftBarCreatePlaylistDiv">
     <div class="leftBarCreatePlaylistDivInside" [routerLink]="['/library/playlists/create']">

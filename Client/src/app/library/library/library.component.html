@@ -1,0 +1,15 @@
+<div class="contentDiv">
+  <div class="libraryDiv">
+      <span class="mainTitle">Library</span>
+
+      <div class="libraryTabset">
+          <div class="libraryTabsetInside">
+              <a class="tabLink" [routerLink]="['/library/playlists']" routerLinkActive="activeTab">Playlists</a>
+              <!-- <a class="tabLink" [routerLink]="['/library/songs']" routerLinkActive="activeTab">Songs</a> -->
+              <a class="tabLink" [routerLink]="['/library/upload']" routerLinkActive="activeTab">Upload</a>
+          </div>
+          <router-outlet></router-outlet>
+      </div>
+
+  </div>
+</div>

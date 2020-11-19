@@ -7,6 +7,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import { JwtModule } from '@auth0/angular-jwt';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
@@ -22,7 +23,6 @@ import { TrackService } from './_services/track.service';
 import { LeftBarComponent } from './leftBar/leftBar.component';
 import { RightBarComponent } from './rightBar/rightBar.component';
 import { BottomMobileNavComponent } from './bottomMobileNav/bottomMobileNav.component';
-import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { BottomPlayerComponent } from './bottomPlayer/bottomPlayer.component';
 import { AdminGenresComponent } from './admin/admin-genres/admin-genres.component';
 import { AdminProfilesComponent } from './admin/admin-profiles/admin-profiles.component';
@@ -32,6 +32,9 @@ import { SearchComponent } from './search/search.component';
 import { ProfileModule } from './profile/profile.module';
 import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
 import { AuthService } from './_services/auth.service';
+import { LibraryModule } from './library/library.module';
+import { environment } from 'src/environments/environment';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +48,6 @@ export function tokenGetter() {
     LeftBarComponent,
     RightBarComponent,
     BottomMobileNavComponent,
-    FileUploaderComponent,
     BottomPlayerComponent,
     AdminGenresComponent,
     SearchComponent,
@@ -53,6 +55,8 @@ export function tokenGetter() {
     AdminProfilesComponent
    ],
   imports: [
+    ProfileModule,
+    LibraryModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -64,11 +68,17 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     NgbModule,
     FormsModule,
-    ProfileModule,
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    JwtModule.forRoot({
+      config : {
+         tokenGetter: tokenGetter,
+         allowedDomains: ['localhost:5001', 'https://hrp-api.herokuapp.com'],
+         disallowedRoutes: ['localhost:5001/api/auth', 'https://hrp-api.herokuapp.com/api/auth']
+      }
+   })
   ],
   providers: [
     TrackService,

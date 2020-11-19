@@ -7,6 +7,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { routes } from '../app-routing.module';
 import { AuthService } from '../_services/auth.service';
+import { PlaylistService } from '../_services/playlist.service';
 
 @Component({
   selector: 'app-leftBar',
@@ -21,13 +22,27 @@ export class LeftBarComponent implements OnInit {
   faCompactDisc = faCompactDisc;
   faUser = faUser;
   faPlus = faPlus;
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(public authService: AuthService, private router: Router,
+      private playlistService: PlaylistService) { }
 
   ngOnInit() {
+    this.playlistService.userPlaylistsUIupdate.subscribe(() => {
+      this.getPlaylists();
+    });
+    if (this.authService.loggedIn()) {
+      this.getPlaylists();
+    }
   }
   getProfile() {
     this.userId = +this.authService.decodedToken.nameid;
     this.router.navigate([`/profile/${this.userId}`]);
   }
 
+  getPlaylists() {
+    this.playlistService.getPlaylists().subscribe(response => {
+      this.playlists = response;
+    }, error => {
+      console.log(error);
+    });
+  }
 }

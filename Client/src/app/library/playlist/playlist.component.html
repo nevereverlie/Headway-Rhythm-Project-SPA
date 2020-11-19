@@ -1,0 +1,46 @@
+<div class="mt-3">
+  <div class="infospanDiv" style="cursor: pointer;" (click)="backToPlaylistsClick()">
+    <span>Back</span>
+  </div>
+  <div class="infospanDiv">
+    <span>Playlist: {{playlist?.playlistName}}</span>
+  </div>
+  <div class="infospanDiv" (click)="this.playlistService.setCurrentPlaylist(this.playlist)"
+    [routerLink]="['addtracks']">
+    <span>Add tracks</span>
+  </div>
+
+  
+  <table class="trackTable">
+    <tr>
+      <td></td>
+      <td>TITLE</td>
+      <td>ARTIST</td>
+      <td class="trackDateAdded">RELEASE YEAR</td>
+      <td class="trackUploaderName">GENRES</td>
+      <td></td>
+    </tr>
+    <tr *ngFor="let track of tracks" class="trackDiv" id={{track.publicId}} (click)="this.trackService.trackDivClick(track.publicId); this.trackService.setActiveTrack(track);"
+        (mouseover)="this.trackService.trackDivMouseOver(track.publicId)" (mouseout)="this.trackService.trackDivMouseOut(track.publicId)">
+      <td><a (click)="this.trackService.modifyHref(track.url, $event, track.performerName, track.trackName)"><fa-icon [icon]="this.trackService.faArrowAltCircleDown" (mouseover)="this.trackService.downloadIconMouseOver($event)" class="fa-lg downloadIcon"></fa-icon></a></td>
+      <td><span>{{track.trackName}}</span></td>
+      <td><span>{{track.performerName}}</span></td>
+      <td class="trackDateAdded">{{track.trackYear}}</td>
+      <td class="trackUploaderName"><span *ngFor="let genre of track.genresOfTrack">{{genre.genreName}} </span></td>
+      <td class="trackDetailsIconDiv">
+        <div class="trackDetailsIcon dropdown" dropdown (click)="$event.stopPropagation()">
+          <a dropdownToggle style="cursor: pointer;">
+            <fa-icon [icon]="this.trackService.faEllipsisV"></fa-icon>
+          </a>
+
+          <div class="dropdown-menu dropdown-menu-right mt-1 detailsDropdownMenu" *dropdownMenu>
+            <a class="dropdown-item" [routerLink]="['/track', track.trackId, 'addToPlaylist']">Add to Playlist</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Download</a>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<router-outlet></router-outlet>
