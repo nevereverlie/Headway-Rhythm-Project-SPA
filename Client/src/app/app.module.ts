@@ -7,6 +7,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
@@ -16,7 +17,7 @@ import { AppRoutingModule, SearchResolver } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent, TrackEditingDialogOverview } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { TrackService } from './_services/track.service';
 import { LeftBarComponent } from './leftBar/leftBar.component';
@@ -27,11 +28,12 @@ import { BottomPlayerComponent } from './bottomPlayer/bottomPlayer.component';
 import { AdminGenresComponent } from './admin/admin-genres/admin-genres.component';
 import { AdminProfilesComponent } from './admin/admin-profiles/admin-profiles.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchComponent } from './search/search.component';
 import { ProfileModule } from './profile/profile.module';
 import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
 import { AuthService } from './_services/auth.service';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -50,11 +52,11 @@ export function tokenGetter() {
     AdminGenresComponent,
     SearchComponent,
     LoginRegisterFormComponent,
-    AdminProfilesComponent
-   ],
+    AdminProfilesComponent,
+    TrackEditingDialogOverview
+  ],
   imports: [
     BrowserModule,
-    FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -64,11 +66,13 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     NgbModule,
     FormsModule,
+    ReactiveFormsModule,
     ProfileModule,
     MatSelectModule,
     MatButtonModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [
     TrackService,

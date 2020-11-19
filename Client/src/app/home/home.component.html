@@ -51,9 +51,13 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right mt-1 detailsDropdownMenu" *dropdownMenu>
-              <a class="dropdown-item" [routerLink]="['/track', track.trackId, 'addToPlaylist']">Add to Playlist</a>
+              <a class="dropdown-item"  [routerLink]="['/track', track.trackId, 'addToPlaylist']">Add to Playlist</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Download</a>
+              <a class="dropdown-item" (click)="this.trackService.modifyHref(track.url, $event, track.performerName, track.trackName)" style="cursor: pointer;">Download</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="openDialog(track)" style="cursor: pointer;">Edit</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" (click)="deleteTrack(track)" style="cursor: pointer;">Delete</a>
             </div>
           </div>
         </td>
