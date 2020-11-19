@@ -38,6 +38,8 @@ import { AuthService } from './_services/auth.service';
 import { GenreService } from './_services/genre.service';
 import { PlaylistService } from './_services/playlist.service';
 import { ProfileService } from './_services/profile.service';
+import { AdminCommonPlaylistsComponent } from './admin/admin-common-playlists/admin-common-playlists.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 export function tokenGetter() {
@@ -58,7 +60,9 @@ export function tokenGetter() {
     SearchComponent,
     LoginRegisterFormComponent,
     AdminProfilesComponent,
-    TrackEditingDialogOverview
+    TrackEditingDialogOverview,
+    AdminCommonPlaylistsComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

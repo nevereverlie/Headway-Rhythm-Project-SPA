@@ -35,6 +35,10 @@ html, body{
     overflow: hidden;
 }
 
+body {
+  overflow-y: scroll;
+}
+
 .contentDiv{
     /* display: inline-block; */
     width: 60%;
