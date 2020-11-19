@@ -54,10 +54,10 @@
               <a class="dropdown-item"  [routerLink]="['/track', track.trackId, 'addToPlaylist']">Add to Playlist</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" (click)="this.trackService.modifyHref(track.url, $event, track.performerName, track.trackName)" style="cursor: pointer;">Download</a>
+              <div *ngIf="user.username === 'admin'" class="dropdown-divider"></div>
+              <a *ngIf="user.username === 'admin'" class="dropdown-item" (click)="openDialog(track)" style="cursor: pointer;">Edit</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="openDialog(track)" style="cursor: pointer;">Edit</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" (click)="deleteTrack(track)" style="cursor: pointer;">Delete</a>
+              <a *ngIf="user.username === 'admin'" class="dropdown-item" (click)="deleteTrack(track)" style="cursor: pointer;">Delete</a>
             </div>
           </div>
         </td>

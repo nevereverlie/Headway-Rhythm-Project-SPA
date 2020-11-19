@@ -5,6 +5,8 @@ import { TrackService } from '../_services/track.service';
 import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Genre } from '../models/Genre';
+import { ProfileService } from '../_services/profile.service';
+import { AuthService } from '../_services/auth.service';
 
 export interface TrackForUpdate {
   trackId: number;
@@ -34,18 +36,31 @@ export class HomeComponent implements OnInit {
     trackGenres: ''
   };
   closeResult: any;
+  userId: any;
+  user: any;
 
   constructor(
     public trackService: TrackService,
     public genreService: GenreService,
+    public userService: ProfileService,
+    public authService: AuthService,
     public dialog: MatDialog
   ) {}
 
   ngOnInit() {
+    this.userId = +this.authService.decodedToken.nameid;
     this.getTracks();
     this.getGenres();
+    this.getUser(this.userId);
   }
 
+  getUser(userId: number) {
+    this.userService.getUser(userId).subscribe(user => {
+      this.user = user;
+    }, error => {
+      console.log(error);
+    });
+  }
 
   getTracks(): Promise<any> {
     return new Promise((resolve, reject) => {
