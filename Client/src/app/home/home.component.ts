@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { GenreService } from '../_services/genre.service';
 import { TrackService } from '../_services/track.service';
@@ -21,7 +21,7 @@ export interface TrackForUpdate {
 })
 
 export class HomeComponent implements OnInit {
-  tracks: any;
+  @Input() tracks: any;
   genres: any;
   selectedGenre: any;
   firstDate: number;
@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
     this.getTracks();
     this.getGenres();
   }
+
 
   getTracks(): Promise<any> {
     return new Promise((resolve, reject) => {

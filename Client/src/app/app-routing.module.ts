@@ -8,6 +8,7 @@ import { SearchComponent } from './search/search.component';
 import { TrackService } from './_services/track.service';
 import { catchError } from 'rxjs/operators';
 import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 @Injectable()
@@ -29,7 +30,7 @@ export const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginRegisterFormComponent},
   {path: 'upload', component: FileUploaderComponent},
-  {path: 'admin', component: AdminGenresComponent},
+  {path: 'admin', component: AdminComponent},
   {path: 'search/:inputString', component: SearchComponent,
         resolve: {data: SearchResolver}
   }

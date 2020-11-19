@@ -1,0 +1,47 @@
+<table class="table admin-table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Common playlist
+        <div class="lockIcon"><i *ngIf="!updateMode" class="fa fa-lock" aria-hidden="true" style="padding-left: 1rem;"></i>
+        <i *ngIf="updateMode" class="fa fa-unlock" aria-hidden="true" style="padding-left: 1rem;"></i></div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let playlist of commonPlaylists">
+      <th scope="row">{{playlist.commonPlaylistId}}</th>
+      <td style="width: 100%;">
+        <div class="form-group">
+          <div *ngIf="!updateMode; then viewMode else updatingMode"></div>
+            <ng-template #viewMode><input name="genreInput" placeholder="{{playlist.commonPlaylistName}}" disabled>
+              <div class="timesIcon"><i class="fa fa-times" style="font-size:36px;color:red;cursor: pointer;" (click)="deleteCommonPlaylist(playlist.commonPlaylistId)"></i></div></ng-template>
+            <ng-template #updatingMode><input name="genreInput" class="updateInput" placeholder="{{playlist.commonPlaylistName}}">
+              <div class="timesIcon"><i class="fa fa-times" style="font-size:36px;color:red;cursor: pointer;" (click)="deleteCommonPlaylist(playlist.commonPlaylistId)"></i></div></ng-template>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="container">
+  <div class="row" style="margin-bottom: 5rem;">
+    <button type="button" class="btn btn-outline-success btn-lg" (click)="openVerticallyCentered(content)">Create</button>
+    <ng-template #content let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Create common playlist</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label>Enter a name of the new playlist: </label>
+        <input style="margin-left: 1rem; width: auto;" [(ngModel)]="commonPlaylistForCreation.commonPlaylistName">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-success" (click)="createCommonPlaylist(commonPlaylistForCreation); modal.close('Ok click')">Save changes</button>
+      </div>
+    </ng-template>
+    <!--<button type="button" class="btn btn-outline-primary btn-lg" id="BtnUpdate" (click)="changeUpdateMode(); !updateMode ? updateCommonPlaylists() : ''">{{updateMode ? 'Save changes' : 'Update'}}</button>-->
+  </div>
+</div>
