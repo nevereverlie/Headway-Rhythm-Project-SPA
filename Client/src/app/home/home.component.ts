@@ -1,22 +1,44 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { GenreService } from '../_services/genre.service';
 import { TrackService } from '../_services/track.service';
+import {FormControl, ReactiveFormsModule} from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
+import { Genre } from '../models/Genre';
+
+export interface TrackForUpdate {
+  trackId: number;
+  trackName: string;
+  performerName: string;
+  trackYear: number;
+  trackGenres: string;
+}
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
+
 export class HomeComponent implements OnInit {
   tracks: any;
   genres: any;
   selectedGenre: any;
   firstDate: number;
   secondDate: number;
+  trackForUpdate: TrackForUpdate = {
+    trackId: 0,
+    trackName: '',
+    trackYear: 0,
+    performerName: '',
+    trackGenres: ''
+  };
+  closeResult: any;
 
   constructor(
     public trackService: TrackService,
-    public genreService: GenreService
+    public genreService: GenreService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -113,4 +135,87 @@ export class HomeComponent implements OnInit {
     });
     this.tracks = filteredTracks;
   }
+
+  updateTrack(): void {
+    this.trackService.updateTrack(this.trackForUpdate).subscribe(() => {
+      this.getTracks();
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  openDialog(track: any): void {
+    this.trackForUpdate.trackId = track.trackId;
+    this.trackForUpdate.trackName = track.trackName;
+    this.trackForUpdate.performerName = track.performerName;
+    this.trackForUpdate.trackYear = track.trackYear;
+
+    const genres = Array<string>();
+    for (const trackGenre of track.genresOfTrack) {
+      genres.push(trackGenre.genreName);
+    }
+    this.trackForUpdate.trackGenres = genres.join(',');
+
+    console.log(this.trackForUpdate);
+    const dialogRef = this.dialog.open(TrackEditingDialogOverview, {
+      width: '250px',
+      data: {TrackForUpdate: this.trackForUpdate}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      console.log(result);
+      if (result !== undefined) {
+        this.trackForUpdate.trackName = result.trackName;
+        this.trackForUpdate.performerName = result.performerName;
+        this.trackForUpdate.trackYear = result.trackYear;
+        this.trackForUpdate.trackGenres = result.trackGenres.join(',');
+      }
+      console.log(this.trackForUpdate);
+
+      this.updateTrack();
+    });
+  }
+
+  deleteTrack(track): void {
+    if (confirm('This operation will DELETE track \"' + track.trackName + ' - ' + track.performerName + '\". Continue?')) {
+      this.trackService.deleteTrack(track.trackId).subscribe((response) => {
+        console.log('Track with ID: ' + track.trackId + ' deleted!');
+        this.getTracks();
+      }, error => {
+        console.log(error);
+      });
+    }
+  }
+}
+
+@Component({
+  selector: 'track-editing-dialog-overview',
+  templateUrl: 'track-editing-dialog-overview.html',
+})
+export class TrackEditingDialogOverview {
+  genres = new FormControl();
+  genresList: Genre[] = [];
+
+  constructor(
+    public genreService: GenreService,
+    public dialogRef: MatDialogRef<TrackEditingDialogOverview>,
+    @Inject(MAT_DIALOG_DATA) public data: TrackForUpdate) {}
+
+  onCancelClick(): void {
+    this.dialogRef.close();
+  }
+
+  ngOnInit() {
+    this.getGenres();
+  }
+
+  getGenres() {
+    return this.genreService.getGenres().subscribe(genres => {
+      genres.forEach(genre => {
+        this.genresList.push(genre);
+      });
+    });
+  }
+
 }
