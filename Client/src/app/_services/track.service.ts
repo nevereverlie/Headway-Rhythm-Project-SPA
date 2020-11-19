@@ -38,6 +38,14 @@ export class TrackService {
     return this.http.get(this.baseUrl + 'tracks/search/' + input);
   }
 
+  updateTrack(trackForUpdate: any) {
+    return this.http.put(this.baseUrl + 'tracks/update', trackForUpdate);
+  }
+
+  deleteTrack(trackId: number) {
+    return this.http.delete(this.baseUrl + 'tracks/delete/' + trackId);
+  }
+
   setActiveTrack(track: any) {
     if (this.activeTrack === track){
       this.resumeTrack.emit();

@@ -54,4 +54,21 @@ export class PlaylistService {
     console.log(playlistTrack);
     return this.http.post(this.baseUrl + 'playlists/add-track-to-playlist/' + this.authService.decodedToken.nameid, playlistTrack);
   }
+
+  getCommonPlaylists() {
+    return this.http.get(environment.apiUrl + 'playlists/get-common-playlists');
+  }
+
+  getCommonPlaylistTracks(cpId) {
+    return this.http.get(environment.apiUrl + 'playlists/get-common-playlist-tracks/' + cpId);
+  }
+
+  createCommonPlaylist(cp) {
+    return this.http.post(environment.apiUrl + 'playlists/create-common-playlist', cp);
+  }
+
+  deleteCommonPlaylist(cpId) {
+    return this.http.delete(environment.apiUrl + 'playlists/delete-common-playlist/' + cpId);
+  }
+
 }
