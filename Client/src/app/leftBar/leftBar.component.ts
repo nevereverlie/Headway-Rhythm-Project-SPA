@@ -33,12 +33,26 @@ export class LeftBarComponent implements OnInit {
 
   ngOnInit() {
     this.getCommonPlaylists();
+    this.playlistService.userPlaylistsUIupdate.subscribe(() => {
+      this.getPlaylists();
+    });
+    if (this.authService.loggedIn()) {
+      this.getPlaylists();
+    }
   }
 
 
   getProfile() {
     this.userId = +this.authService.decodedToken.nameid;
     this.router.navigate([`/profile/${this.userId}`]);
+  }
+
+  getPlaylists() {
+    this.playlistService.getPlaylists().subscribe(response => {
+      this.playlists = response;
+      }, error => {
+      console.log(error);
+    });
   }
 
   getCommonPlaylists() {

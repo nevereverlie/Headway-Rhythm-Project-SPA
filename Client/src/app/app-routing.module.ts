@@ -2,7 +2,6 @@ import { Injectable, NgModule } from '@angular/core';
 import { Routes, RouterModule, Resolve, Router, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { AdminGenresComponent } from './admin/admin-genres/admin-genres.component';
-import { FileUploaderComponent } from './file-uploader/file-uploader.component';
 import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { TrackService } from './_services/track.service';
@@ -29,7 +28,6 @@ export class SearchResolver implements Resolve<any> {
 export const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'login', component: LoginRegisterFormComponent},
-  {path: 'upload', component: FileUploaderComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'search/:inputString', component: SearchComponent,
         resolve: {data: SearchResolver}

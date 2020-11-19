@@ -9,7 +9,7 @@
       </tr>
 
       <tr>
-        <a [routerLink]="['/upload']">
+        <a [routerLink]="['/library/playlists']">
           <td><fa-icon [icon]="faCompactDisc"></fa-icon></td>
           <td><span>Library</span></td>
         </a>
@@ -28,6 +28,7 @@
       <div class="infospanDiv">
         <span class="info-span">COMMON PLAYLISTS</span>
       </div>
+
       <mat-accordion class="accordeon-dark">
         <mat-expansion-panel *ngFor="let playlist of playlists" hideToggle>
           <mat-expansion-panel-header
@@ -49,8 +50,20 @@
           </p>
         </mat-expansion-panel>
       </mat-accordion>
+      
+      <div class="userPlaylistsDiv" *ngIf="this.authService.loggedIn()">
+        <div class="infospanDiv mt-3">
+          <span class="info-span">YOUR PLAYLISTS</span>
+        </div>
+        <div class="playlistDiv" *ngFor="let playlist of playlists" [routerLink]="['/library/playlists', playlist.playlistId]">
+          <span class="playlistSpan">{{playlist.playlistName}}</span>
+        </div>
+      </div>
+    
     </div>
   </div>
+
+  
 
   <div class="leftBarCreatePlaylistDiv">
     <div

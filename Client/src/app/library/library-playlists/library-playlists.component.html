@@ -1,0 +1,19 @@
+<div class="leftBarCreatePlaylistDiv"  [routerLink]="['/library/playlists/create']">
+  <div class="leftBarCreatePlaylistDivInside">
+    <fa-icon [icon]="faPlus" class="mr-2"></fa-icon>
+    <span>Create Playlist</span>
+  </div>
+</div>
+
+<div class="text-center mt-3">
+  <table class="playlistTable">
+    <tr>
+      <td>NAME</td>
+    </tr>
+    <tr *ngFor="let playlist of playlists" class="playlistDiv" [routerLink]="[playlist.playlistId]"
+      (click)="this.playlistService.setCurrentPlaylist(playlist)" id={{playlist.playlistId}} >
+      <td><span>{{playlist.playlistName}}</span></td>
+    </tr>
+  </table>
+</div>
+<router-outlet></router-outlet>

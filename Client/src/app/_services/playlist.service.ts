@@ -1,13 +1,59 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlaylistService {
+  private creationMode = false;
+  baseUrl = environment.apiUrl;
+  userPlaylistsUIupdate: EventEmitter<any> = new EventEmitter();
+  tracksAddedToPlaylistUpdate: EventEmitter<any> = new EventEmitter();
+  private detailedViewMode = false;
+  currentPlaylist: any;
+  private addTracksMode = false;
+  constructor(private http: HttpClient, private authService: AuthService/*, private route: ActivatedRoute,
+    private router: Router*/) { 
 
-constructor(private http: HttpClient) { }
+    }
+
+  isAddTracksModeEnabled() {
+    return this.addTracksMode;
+  }
+
+  createPlaylist(model: any) {
+    return this.http.post(this.baseUrl + 'playlists/add-playlist-for-user/' + this.authService.decodedToken.nameid, model);
+  }
+  getPlaylists() {
+    return this.http.get(this.baseUrl + 'playlists/get-playlists-of-user/' + this.authService.decodedToken.nameid);
+  }
+  getPlaylist(playlistId: string) {
+    return this.http.get(this.baseUrl + 'playlists/get-playlist/' + playlistId);
+  }
+
+  setCurrentPlaylist(playlist: any) {
+    this.currentPlaylist = playlist;
+  }
+
+  getTracksOfPlaylist(playlistId: string) {
+    return this.http.get(this.baseUrl + 'playlists/get-tracks-of-playlist/' + this.authService.decodedToken.nameid +
+      '/' + playlistId);
+  }
+
+  addTrackToPlaylist(track_id: number, playlist_id: number) {
+    // const playlistTrack: PlaylistTrack = {
+    //   trackId: track_id,
+    //   playlistId: playlist_id
+    // };
+    const playlistTrack = {
+      "trackId": track_id,
+      "playlistId": playlist_id
+    }
+    console.log(playlistTrack);
+    return this.http.post(this.baseUrl + 'playlists/add-track-to-playlist/' + this.authService.decodedToken.nameid, playlistTrack);
+  }
 
   getCommonPlaylists() {
     return this.http.get(environment.apiUrl + 'playlists/get-common-playlists');
