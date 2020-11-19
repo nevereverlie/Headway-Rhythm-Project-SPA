@@ -81,14 +81,16 @@ export class HomeComponent implements OnInit {
   }
 
   private filterByGenreAndYear(track: any, filteredTracks: any[]): void {
-    const genres = this.unpackGenres(track);
-    if (
-      genres.genre.genreName === this.selectedGenre &&
-      track.trackYear >= this.firstDate &&
-      track.trackYear <= this.secondDate
-    ) {
-      filteredTracks.push(track);
-    }
+    const genres = track.genresOfTrack;
+    genres.forEach(genre => {
+      if (
+        genre.genreName === this.selectedGenre &&
+        track.trackYear >= this.firstDate &&
+        track.trackYear <= this.secondDate
+      ) {
+        filteredTracks.push(track);
+      }
+    });
     this.tracks = filteredTracks;
   }
 
@@ -103,26 +105,12 @@ export class HomeComponent implements OnInit {
   }
 
   private filterByGenre(track: any, filteredTracks: any[]): void {
-    const genres = this.unpackGenres(track);
-    if (genres.genre.genreName === this.selectedGenre) {
-      filteredTracks.push(track);
-    }
-    this.tracks = filteredTracks;
-  }
-
-  private unpackGenres(track: any): any {
-    for (const [key, trackGenres] of Object.entries(track)) {
-      if (key === 'trackGenres') {
-        const trackGenre = trackGenres;
-        if (typeof trackGenre === 'object') {
-          for (const key in trackGenre) {
-            if (Object.prototype.hasOwnProperty.call(trackGenre, key)) {
-              const genres = trackGenre[key];
-              return genres;
-            }
-          }
-        }
+    const genres = track.genresOfTrack;
+    genres.forEach(genre => {
+      if (genre.genreName === this.selectedGenre) {
+        filteredTracks.push(track);
       }
-    }
+    });
+    this.tracks = filteredTracks;
   }
 }

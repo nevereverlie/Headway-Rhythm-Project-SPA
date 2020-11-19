@@ -43,7 +43,7 @@
         <td><span>{{track.trackName}}</span></td>
         <td><span>{{track.performerName}}</span></td>
         <td class="trackDateAdded">{{track.trackYear}}</td>
-        <td class="trackUploaderName"><span *ngFor="let genre of track.trackGenres">{{genre.genre.genreName}} </span></td>
+        <td class="trackUploaderName"><span *ngFor="let genre of track.genresOfTrack">{{genre.genreName}} </span></td>
         <td class="trackDetailsIconDiv">
           <div class="trackDetailsIcon dropdown" dropdown (click)="$event.stopPropagation()">
             <a dropdownToggle style="cursor: pointer;">
