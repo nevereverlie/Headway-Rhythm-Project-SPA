@@ -1,8 +1,6 @@
 <div class="leftBar">
-
   <div class="leftBarUpperDivMain">
     <table class="leftBarUpperDiv">
-
       <tr>
         <a [routerLink]="['']">
           <td><fa-icon [icon]="faHome"></fa-icon></td>
@@ -30,29 +28,37 @@
       <div class="infospanDiv">
         <span class="info-span">COMMON PLAYLISTS</span>
       </div>
-      <div class="playlistDiv">
-        <span class="playlistSpan">For mom</span>
-      </div>
-      <div class="playlistDiv">
-        <span class="playlistSpan">inside your car</span>
-      </div>
-      <div class="playlistDiv">
-        <span class="playlistSpan">.badmood</span>
-      </div>
-      <div class="playlistDiv">
-        <span class="playlistSpan">Going crazy</span>
-      </div>
-      <div class="playlistDiv">
-        <span class="playlistSpan">Classic rock</span>
-      </div>
+      <mat-accordion class="accordeon-dark">
+        <mat-expansion-panel *ngFor="let playlist of playlists" hideToggle>
+          <mat-expansion-panel-header
+            (click)="getCommonPlaylistTracks(playlist.commonPlaylistId)"
+          >
+            <mat-panel-title>
+              {{ playlist.commonPlaylistName }}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p
+            *ngFor="let playlistTrack of playlistTracks"
+            (click)="
+              this.trackService.trackDivClick(playlistTrack.publicId);
+              this.trackService.setActiveTrack(playlistTrack)"
+            style="cursor: pointer;"
+          >
+            {{ playlistTrack.performerName }} - {{ playlistTrack.trackName }}
+            <mat-divider></mat-divider>
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
     </div>
   </div>
 
   <div class="leftBarCreatePlaylistDiv">
-    <div class="leftBarCreatePlaylistDivInside" [routerLink]="['/library/playlists/create']">
+    <div
+      class="leftBarCreatePlaylistDivInside"
+      [routerLink]="['/library/playlists/create']"
+    >
       <i class="fa fa-plus"></i>
       <span>New Playlist</span>
     </div>
   </div>
-
 </div>

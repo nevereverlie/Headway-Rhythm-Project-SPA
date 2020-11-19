@@ -8,6 +8,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import {
@@ -33,6 +35,9 @@ import { SearchComponent } from './search/search.component';
 import { ProfileModule } from './profile/profile.module';
 import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
 import { AuthService } from './_services/auth.service';
+import { GenreService } from './_services/genre.service';
+import { PlaylistService } from './_services/playlist.service';
+import { ProfileService } from './_services/profile.service';
 
 
 export function tokenGetter() {
@@ -72,7 +77,9 @@ export function tokenGetter() {
     MatButtonModule,
     MatInputModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatDividerModule
   ],
   providers: [
     TrackService,
@@ -91,7 +98,10 @@ export function tokenGetter() {
         ]
       } as SocialAuthServiceConfig,
     },
-    AuthService
+    AuthService,
+    GenreService,
+    PlaylistService,
+    ProfileService
   ],
   bootstrap: [AppComponent]
 })
