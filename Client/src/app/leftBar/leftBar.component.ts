@@ -18,6 +18,7 @@ import { TrackService } from '../_services/track.service';
 })
 export class LeftBarComponent implements OnInit {
   playlists: any;
+  commonPlaylists: any;
   playlistTracks: any;
   userId: number;
   faHome = faHome;
@@ -26,7 +27,7 @@ export class LeftBarComponent implements OnInit {
   faUser = faUser;
   faPlus = faPlus;
 
-  constructor(private authService: AuthService,
+  constructor(public authService: AuthService,
               private router: Router,
               private playlistService: PlaylistService,
               public trackService: TrackService) { }
@@ -57,8 +58,8 @@ export class LeftBarComponent implements OnInit {
 
   getCommonPlaylists() {
     this.playlistService.getCommonPlaylists().subscribe((cp) => {
-      this.playlists = cp;
-      console.log(this.playlists);
+      this.commonPlaylists = cp;
+      console.log(this.commonPlaylists);
     }, error => {
       console.log(error);
     });

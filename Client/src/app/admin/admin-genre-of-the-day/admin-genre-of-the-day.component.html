@@ -1,0 +1,11 @@
+<div class = "GOTDDiv">
+  <span>Genre of the day</span>
+  <div style="border-bottom: 1px solid black; width: 80%; margin: auto; margin-top: 10%;">
+    <mat-select [(ngModel)]="selectedGenre">
+      <mat-option *ngFor="let genre of genres" [value]="genre.genreId">
+        {{genre.genreName}}
+      </mat-option>
+    </mat-select>
+  </div>
+  <button class="formSubmitButton" type="submit" (click)="updateButtonClick()">Update</button>
+</div>

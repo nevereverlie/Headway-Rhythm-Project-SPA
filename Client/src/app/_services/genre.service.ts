@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Genre } from '../models/Genre';
@@ -9,6 +9,7 @@ import { Genre } from '../models/Genre';
 })
 export class GenreService {
   baseUrl = environment.apiUrl;
+  genreOfTheDayUpdate: EventEmitter<any> = new EventEmitter();
   constructor(private http: HttpClient) { }
 
   getGenres(): Observable<Genre[]> {
@@ -28,4 +29,11 @@ export class GenreService {
     return this.http.delete(this.baseUrl + 'genres/delete/' + id);
   }
 
+  getGenreOfTheDay(){
+    return this.http.get(this.baseUrl + 'genres/get-genre-of-the-day');
+  }
+
+  updateGenreOfTheDay(genreId: any){
+    return this.http.put(this.baseUrl + 'genres/update-genre-of-the-day/' + genreId, genreId);
+  }
 }
