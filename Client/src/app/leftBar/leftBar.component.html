@@ -30,7 +30,7 @@
       </div>
 
       <mat-accordion class="accordeon-dark">
-        <mat-expansion-panel *ngFor="let playlist of playlists" hideToggle>
+        <mat-expansion-panel *ngFor="let playlist of commonPlaylists" hideToggle>
           <mat-expansion-panel-header
             (click)="getCommonPlaylistTracks(playlist.commonPlaylistId)"
           >

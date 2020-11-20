@@ -1,0 +1,27 @@
+.GOTDDiv{
+    margin: auto;
+    max-width: 400px;
+    height: 200px;
+    background-color: rgb(190,190,190);
+    color: black;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+span{
+    font-size: 22px;
+}
+
+.formSubmitButton{
+    width: 60%;
+    height: 40px;
+    margin-top: 10%;
+    background-color: rgb(130, 0, 190);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.formSubmitButton:hover{
+    background-color: rgb(180, 0, 255);
+}

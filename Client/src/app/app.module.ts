@@ -42,6 +42,7 @@ import { PlaylistService } from './_services/playlist.service';
 import { ProfileService } from './_services/profile.service';
 import { AdminCommonPlaylistsComponent } from './admin/admin-common-playlists/admin-common-playlists.component';
 import { AdminComponent } from './admin/admin.component';
+import { AdminGenreOfTheDayComponent } from './admin/admin-genre-of-the-day/admin-genre-of-the-day.component';
 
 
 export function tokenGetter() {
@@ -63,7 +64,8 @@ export function tokenGetter() {
     AdminProfilesComponent,
     TrackEditingDialogOverview,
     AdminCommonPlaylistsComponent,
-    AdminComponent
+    AdminComponent,
+    AdminGenreOfTheDayComponent
   ],
   imports: [
     ProfileModule,
@@ -90,7 +92,7 @@ export function tokenGetter() {
          allowedDomains: ['localhost:5001', 'https://hrp-api.herokuapp.com'],
          disallowedRoutes: ['localhost:5001/api/auth', 'https://hrp-api.herokuapp.com/api/auth']
       }
-   })
+   }),
     MatDialogModule,
     MatExpansionModule,
     MatDividerModule
