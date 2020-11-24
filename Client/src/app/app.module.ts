@@ -44,6 +44,7 @@ import { AdminCommonPlaylistsComponent } from './admin/admin-common-playlists/ad
 import { AdminComponent } from './admin/admin.component';
 import { AdminGenreOfTheDayComponent } from './admin/admin-genre-of-the-day/admin-genre-of-the-day.component';
 import { AlertifyService } from './_services/alertify.service';
+import { AddTrackToCommonPlaylistComponent } from './leftBar/add-track-to-common-playlist/add-track-to-common-playlist.component';
 
 
 export function tokenGetter() {
@@ -66,7 +67,8 @@ export function tokenGetter() {
     TrackEditingDialogOverview,
     AdminCommonPlaylistsComponent,
     AdminComponent,
-    AdminGenreOfTheDayComponent
+    AdminGenreOfTheDayComponent,
+    AddTrackToCommonPlaylistComponent
   ],
   imports: [
     ProfileModule,
@@ -96,7 +98,7 @@ export function tokenGetter() {
    }),
     MatDialogModule,
     MatExpansionModule,
-    MatDividerModule
+    MatDividerModule,
   ],
   providers: [
     TrackService,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faChevronLeft, faChevronRight, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 import { TrackService } from '../_services/track.service';
 
@@ -15,8 +16,10 @@ export class NavComponent implements OnInit {
   faChevronRight = faChevronRight;
   faSignInAlt = faSignInAlt;
 
-  constructor(public trackService: TrackService, private router: Router,
-    public authService: AuthService) { }
+  constructor(public trackService: TrackService,
+              private router: Router,
+              public authService: AuthService,
+              private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
@@ -24,6 +27,7 @@ export class NavComponent implements OnInit {
   logout() {
     this.authService.logout();
     this.router.navigate(['']);
+    this.alertify.message('Logged Out');
   }
 
   loggedIn() {

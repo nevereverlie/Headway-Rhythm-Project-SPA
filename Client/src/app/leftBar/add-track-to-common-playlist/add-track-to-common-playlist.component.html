@@ -1,0 +1,34 @@
+<div class="shadowDiv">
+  <div class="addTracksToPlaylist">
+    <div class="addTracksToPlaylistInside">
+
+      <!--Close Icon-->
+      <div class="closeIconDiv">
+        <fa-icon (click)="close()" [icon]="this.trackService.faTimes"></fa-icon>
+      </div>
+      <!--Search Form-->
+      <div class="searchForm">
+        <form>
+          <div class="searchIconDiv"><fa-icon [icon]="this.trackService.faSearch" class="searchIcon"></fa-icon></div>
+          <input class="searchFormInput" type="text" placeholder="Search" name="search"
+            aria-label="Search">
+        </form>
+      </div>
+      <!--Tracks-->
+      <div class="tracksDiv">
+        <div *ngFor="let track of tracks" class="addTrackDiv trackDiv" id={{track.publicId}}
+          (click)="this.trackService.trackDivClick(track.publicId); this.trackService.setActiveTrack(track);">
+          <div class="addTrackInfoDiv">
+            <span class="trackInfoSpan">{{track.trackName}}</span>
+            <span class="performerInfoSpan">{{track.performerName}}</span>
+          </div>
+          <div class="addTrackIconDiv" (click)="$event.stopPropagation()">
+            <fa-icon *ngIf="!isTrackOnPlaylist(track)" (click)="addTrackToPlaylist(track.trackId,
+            this.commonPlaylist.commonPlaylistId)" [icon]="this.trackService.faPlus"></fa-icon>
+            <fa-icon *ngIf="isTrackOnPlaylist(track)" (click)="$event.stopPropagation()" [icon]="this.trackService.faCheck"></fa-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

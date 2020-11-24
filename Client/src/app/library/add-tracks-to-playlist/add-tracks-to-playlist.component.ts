@@ -15,10 +15,10 @@ export class AddTracksToPlaylistComponent implements OnInit {
   playlist: any;
   tracksOfPlaylist: any;
   constructor(public trackService: TrackService, public playlistService: PlaylistService, private router: Router,
-    private location: Location, private alertify: AlertifyService, private route: ActivatedRoute) { }
+              private location: Location, private alertify: AlertifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    
+
     this.route.parent.data.subscribe(response => {
       this.playlist = response.playlist;
       // console.log(this.playlist);
@@ -73,7 +73,7 @@ export class AddTracksToPlaylistComponent implements OnInit {
     console.log(track);
     if(this.tracksOfPlaylist.some(t => t.trackId === track.trackId)){
       console.log(true);
-      
+
     }
     else{
       console.log(false);
