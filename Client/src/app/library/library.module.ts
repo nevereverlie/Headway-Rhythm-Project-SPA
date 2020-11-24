@@ -11,6 +11,8 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { AddTracksToPlaylistComponent } from './add-tracks-to-playlist/add-tracks-to-playlist.component';
 import { PlaylistCreationComponent } from './playlist-creation/playlist-creation.component';
 import { FormsModule } from '@angular/forms';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { FormsModule } from '@angular/forms';
     LibraryRoutingModule,
     FileUploadModule,
     FontAwesomeModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    BsDropdownModule
   ],
   providers: [
     PlaylistResolver

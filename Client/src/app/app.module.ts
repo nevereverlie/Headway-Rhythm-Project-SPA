@@ -43,6 +43,7 @@ import { ProfileService } from './_services/profile.service';
 import { AdminCommonPlaylistsComponent } from './admin/admin-common-playlists/admin-common-playlists.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGenreOfTheDayComponent } from './admin/admin-genre-of-the-day/admin-genre-of-the-day.component';
+import { AlertifyService } from './_services/alertify.service';
 
 
 export function tokenGetter() {
@@ -117,7 +118,8 @@ export function tokenGetter() {
     AuthService,
     GenreService,
     PlaylistService,
-    ProfileService
+    ProfileService,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })

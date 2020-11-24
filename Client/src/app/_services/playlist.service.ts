@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { AlertifyService } from './alertify.service';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -14,8 +15,8 @@ export class PlaylistService {
   private detailedViewMode = false;
   currentPlaylist: any;
   private addTracksMode = false;
-  constructor(private http: HttpClient, private authService: AuthService/*, private route: ActivatedRoute,
-    private router: Router*/) { 
+  constructor(private http: HttpClient, private authService: AuthService,
+    public alertify: AlertifyService) { 
 
     }
 
@@ -43,16 +44,20 @@ export class PlaylistService {
   }
 
   addTrackToPlaylist(track_id: number, playlist_id: number) {
-    // const playlistTrack: PlaylistTrack = {
-    //   trackId: track_id,
-    //   playlistId: playlist_id
-    // };
     const playlistTrack = {
       "trackId": track_id,
       "playlistId": playlist_id
     }
     console.log(playlistTrack);
     return this.http.post(this.baseUrl + 'playlists/add-track-to-playlist/' + this.authService.decodedToken.nameid, playlistTrack);
+  }
+  deleteTrackFromPlaylist(track_id: number, playlist_id: number) {
+    const playlistTrack = {
+      "trackId": track_id,
+      "playlistId": playlist_id
+    }
+    console.log(playlistTrack);
+    return this.http.post(this.baseUrl + 'playlists/delete-track-from-playlist/' + this.authService.decodedToken.nameid, playlistTrack);
   }
 
   getCommonPlaylists() {

@@ -1,14 +1,21 @@
-<div class="mt-3">
-  <div class="infospanDiv" style="cursor: pointer;" (click)="backToPlaylistsClick()">
-    <span>Back</span>
+<div>
+  <div class="backSpanDiv" >
+    
+    <span class="backSpan" (click)="backToPlaylistsClick()">
+      <fa-icon [icon]="faChevronLeft"></fa-icon>
+      <span>Back</span>
+    </span>
   </div>
-  <div class="infospanDiv">
-    <span>Playlist: {{playlist?.playlistName}}</span>
-  </div>
-  <div class="infospanDiv" (click)="this.playlistService.setCurrentPlaylist(this.playlist)"
+  <div class="playlistSpanDiv">
+    <span>{{playlist?.playlistName}}</span>
+    <!-- {{playlist?.playlistName}} -->
+    <div class="addTracksIconDiv" (click)="this.playlistService.setCurrentPlaylist(this.playlist)"
     [routerLink]="['addtracks']">
-    <span>Add tracks</span>
+      <fa-icon [icon]="this.trackService.faPlus"></fa-icon>
+      <span>Add tracks</span>
+    </div>
   </div>
+  
 
   
   <table class="trackTable">
@@ -28,19 +35,27 @@
       <td class="trackDateAdded">{{track.trackYear}}</td>
       <td class="trackUploaderName"><span *ngFor="let genre of track.genresOfTrack">{{genre.genreName}} </span></td>
       <td class="trackDetailsIconDiv">
-        <div class="trackDetailsIcon dropdown" dropdown (click)="$event.stopPropagation()">
-          <a dropdownToggle style="cursor: pointer;">
-            <fa-icon [icon]="this.trackService.faEllipsisV"></fa-icon>
+        <div class="trackDetailsIcon" (mouseover)="$event.stopPropagation();" (click)="$event.stopPropagation();">
+          <a (click)="enableDeleteConfirmationMode(track);" style="cursor: pointer;">
+            <fa-icon [icon]="this.trackService.faMinus"></fa-icon>
           </a>
-
-          <div class="dropdown-menu dropdown-menu-right mt-1 detailsDropdownMenu" *dropdownMenu>
-            <a class="dropdown-item" [routerLink]="['/track', track.trackId, 'addToPlaylist']">Add to Playlist</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Download</a>
-          </div>
         </div>
       </td>
     </tr>
   </table>
 </div>
+
+<!-- Delete confirmation -->
+<div class="shadowDiv" *ngIf="isDeleteConfirmationModeEnabled()">
+  <div class="deleteConfirmationDiv">
+    <div class="infospanDiv">
+      <span>Sure you want to remove this track?</span>
+    </div>
+    <button class="submitButton" (click)="deleteTrackFromPlaylist(); cancelDeleteConfirmationMode(); ">Submit</button>
+    <div class="cancelButtonDiv" (click)="cancelDeleteConfirmationMode()">
+      <span>Cancel</span>
+    </div>
+  </div>
+</div>
+
 <router-outlet></router-outlet>

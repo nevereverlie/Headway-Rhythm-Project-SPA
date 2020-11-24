@@ -6,6 +6,8 @@ import { faPause } from '@fortawesome/free-solid-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faMinus } from '@fortawesome/free-solid-svg-icons';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { environment } from 'src/environments/environment';
 
@@ -22,11 +24,13 @@ export class TrackService {
   userTracksUIupdate: EventEmitter<any> = new EventEmitter();
   faArrowAltCircleDown = faArrowCircleDown;
   faPlay = faPlay;
+  faMinus = faMinus;
   faPause = faPause;
   faTimes = faTimes;
   faSearch = faSearch;
   faPlus = faPlus;
   faEllipsisV = faEllipsisV;
+  faCheck = faCheck;
 
   constructor(private http: HttpClient) { }
 

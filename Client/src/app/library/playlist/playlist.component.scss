@@ -1,10 +1,120 @@
 .infospanDiv{
     color: rgb(130, 130, 130);
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 300;
     user-select: none;
 
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    margin-top: 10px;
+}
+.backSpanDiv{
+  color: rgb(130, 130, 130);
+  font-size: 18px;
+  font-weight: 300;
+  user-select: none;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  margin-top: 15px;
+}
+.backSpan{
+  cursor: pointer;
+}
+.backSpan:hover{
+  color: white;
+}
+.backSpan fa-icon{
+  font-size: 14px;
+  margin-right: 5px;
+}
+.playlistSpanDiv{
+  color: rgb(210, 210, 210);
+  font-size: 46px;
+  font-weight: 300;
+  user-select: none;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  // margin-top: 5px;
+}
+.addTracksIconDiv{
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  margin-left: 30px;
+  right: 0;
+  // color: rgb(180, 0, 255);
+  color: rgb(130, 0, 190);
+  cursor: pointer;
+}
+.addTracksIconDiv fa-icon{
+  font-size: 14px;
+  margin-right: 5px;
+}
+.addTracksIconDiv:hover{
+  color: rgb(180, 0, 255);
+}
+.trackDetailsIconDiv{
+    overflow: visible;
+    // cursor: pointer;
+  }
+
+// .trackDetailsIconDiv:hover{
+//   color: rgb(180, 0, 255);
+// }
+
+.trackDetailsIcon:hover{
+  color: rgb(180, 0, 255);
+}
+
+.deleteConfirmationDiv{
+  text-align: center;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 400px;
+  // height: 400px;
+  background-color: rgb(27,27,27);
+  border: 1px solid rgb(40,40,40);
+  user-select: none;
+
+}
+
+.submitButton{
+  width: 60%;
+  margin: auto;
+  height: 40px;
+  margin-top: 5%;
+  background-color: rgb(130, 0, 190);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.submitButton:hover{
+  background-color: rgb(180, 0, 255);
+}
+
+.cancelButtonDiv{
+  width: 100%;
+  text-align: center;
+  margin-top: 5%;
+  font-size: 14px;
+  color: rgb(200,200,200);
+  margin-bottom: 10px;
+}
+
+.cancelButtonDiv:hover{
+  color:white;
+  cursor: pointer;
 }

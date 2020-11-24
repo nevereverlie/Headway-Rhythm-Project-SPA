@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  //apiUrl: 'https://hrp-api.herokuapp.com/api/'
+  // apiUrl: 'https://hrp-api.herokuapp.com/api/'
   apiUrl: 'http://localhost:5001/api/'
 };
 

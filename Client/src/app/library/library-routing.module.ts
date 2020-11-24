@@ -43,7 +43,8 @@ const routes: Routes = [
           {path: 'playlists/:playlistId', component: PlaylistComponent,
               resolve: {playlist: PlaylistResolver},
               children: [
-                  {path: 'addtracks', component: AddTracksToPlaylistComponent}
+                  {path: 'addtracks', component: AddTracksToPlaylistComponent
+                  }
               ]
           }
           // {path: 'playlists', component: LibraryPlaylistsComponent,
