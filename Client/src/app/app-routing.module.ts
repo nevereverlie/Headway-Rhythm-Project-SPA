@@ -8,6 +8,7 @@ import { TrackService } from './_services/track.service';
 import { catchError } from 'rxjs/operators';
 import { LoginRegisterFormComponent } from './login-register-form/login-register-form.component';
 import { AdminComponent } from './admin/admin.component';
+import { AddTrackToCommonPlaylistComponent } from './leftBar/add-track-to-common-playlist/add-track-to-common-playlist.component';
 
 
 @Injectable()
@@ -26,7 +27,9 @@ export class SearchResolver implements Resolve<any> {
 }
 
 export const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent, children: [
+    {path: 'add-track-to-common-playlist/:cpId', component: AddTrackToCommonPlaylistComponent}
+  ]},
   {path: 'login', component: LoginRegisterFormComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'search/:inputString', component: SearchComponent,

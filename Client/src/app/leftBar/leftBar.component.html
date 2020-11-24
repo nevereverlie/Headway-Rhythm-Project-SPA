@@ -30,40 +30,51 @@
       </div>
 
       <mat-accordion class="accordeon-dark">
-        <mat-expansion-panel *ngFor="let playlist of commonPlaylists" hideToggle>
+        <mat-expansion-panel
+          *ngFor="let playlist of commonPlaylists"
+          hideToggle
+        >
           <mat-expansion-panel-header
             (click)="getCommonPlaylistTracks(playlist.commonPlaylistId)"
           >
             <mat-panel-title>
               {{ playlist.commonPlaylistName }}
             </mat-panel-title>
+            <fa-icon
+              *ngIf="isAdmin()"
+              [icon]="this.trackService.faPlus"
+              [routerLink]="['/add-track-to-common-playlist/' + playlist.commonPlaylistId]"
+              style="margin-left: 1rem; user-select: none;"
+            ></fa-icon>
           </mat-expansion-panel-header>
           <p
             *ngFor="let playlistTrack of playlistTracks"
             (click)="
               this.trackService.trackDivClick(playlistTrack.publicId);
-              this.trackService.setActiveTrack(playlistTrack)"
-            style="cursor: pointer;"
+              this.trackService.setActiveTrack(playlistTrack)
+            "
+            style="cursor: pointer"
           >
             {{ playlistTrack.performerName }} - {{ playlistTrack.trackName }}
             <mat-divider></mat-divider>
           </p>
         </mat-expansion-panel>
       </mat-accordion>
-      
+
       <div class="userPlaylistsDiv" *ngIf="this.authService.loggedIn()">
         <div class="infospanDiv mt-3">
           <span class="info-span">YOUR PLAYLISTS</span>
         </div>
-        <div class="playlistDiv" *ngFor="let playlist of playlists" [routerLink]="['/library/playlists', playlist.playlistId]">
-          <span class="playlistSpan">{{playlist.playlistName}}</span>
+        <div
+          class="playlistDiv"
+          *ngFor="let playlist of playlists"
+          [routerLink]="['/library/playlists', playlist.playlistId]"
+        >
+          <span class="playlistSpan">{{ playlist.playlistName }}</span>
         </div>
       </div>
-    
     </div>
   </div>
-
-  
 
   <div class="leftBarCreatePlaylistDiv">
     <div

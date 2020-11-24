@@ -16,7 +16,7 @@ export class PlaylistService {
   currentPlaylist: any;
   private addTracksMode = false;
   constructor(private http: HttpClient, private authService: AuthService,
-    public alertify: AlertifyService) { 
+    public alertify: AlertifyService) {
 
     }
 
@@ -47,10 +47,14 @@ export class PlaylistService {
     const playlistTrack = {
       "trackId": track_id,
       "playlistId": playlist_id
-    }
+    };
     console.log(playlistTrack);
     return this.http.post(this.baseUrl + 'playlists/add-track-to-playlist/' + this.authService.decodedToken.nameid, playlistTrack);
   }
+  addTrackToCommonPlaylist(trackId: number, cpId: number) {
+    return this.http.post(this.baseUrl + 'playlists/add-track-to-common-playlist/' + cpId, trackId);
+  }
+
   deleteTrackFromPlaylist(track_id: number, playlist_id: number) {
     const playlistTrack = {
       "trackId": track_id,
@@ -62,6 +66,10 @@ export class PlaylistService {
 
   getCommonPlaylists() {
     return this.http.get(environment.apiUrl + 'playlists/get-common-playlists');
+  }
+
+  getCommonPlaylist(cpId: number) {
+    return this.http.get(environment.apiUrl + 'playlists/get-common-playlist/' + cpId);
   }
 
   getCommonPlaylistTracks(cpId) {

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../_services/auth.service';
 import { Location } from '@angular/common';
+import { AlertifyService } from '../_services/alertify.service';
 
 @Component({
   selector: 'app-login-register-form',
@@ -16,7 +17,9 @@ export class LoginRegisterFormComponent implements OnInit {
   model: any = {};
   registerMode: boolean = false;
   constructor(private authService: AuthService,
-    private router: Router,  private location: Location) { }
+              private router: Router,
+              private location: Location,
+              private alertify: AlertifyService) { }
 
   ngOnInit() {
   }
@@ -24,9 +27,9 @@ export class LoginRegisterFormComponent implements OnInit {
 
   login() {
     this.authService.login(this.model).subscribe(next => {
-      console.log('logged successfully');
+      this.alertify.success('Logged In');
     }, error => {
-     console.log('Failed to login');
+      this.alertify.error('Failed to login: ' + error);
     }, () => {
       this.router.navigate(['']);
     });
@@ -38,10 +41,10 @@ export class LoginRegisterFormComponent implements OnInit {
 
   register() {
     this.authService.register(this.model).subscribe(() => {
-      console.log('registration success');
+      this.alertify.success('Registration success');
       this.cancelRegistrationMode();
     }, error => {
-      console.log(error);
+      this.alertify.error(error);
     });
   }
 

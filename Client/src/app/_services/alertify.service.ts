@@ -7,7 +7,7 @@ import * as alertify from 'alertifyjs';
 export class AlertifyService {
 
   constructor() { }
-  
+
     confirm(message: string, okCallback: () => any) {
       alertify.confirm(message, (e: any) => {
         if (e) { //this e event thrown when user ckicks ok botton
@@ -15,22 +15,17 @@ export class AlertifyService {
         } else {}
       });
     }
-  
+
       success(message: string) {
         alertify.success(message);
       }
-  
       error(message: string) {
         alertify.error(message);
       }
-  
       warning(message: string) {
         alertify.warning(message);
       }
-  
       message(message: string) {
         alertify.message(message);
       }
-  
   }
-  

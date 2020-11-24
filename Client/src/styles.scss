@@ -1,6 +1,8 @@
 @import '../node_modules/font-awesome/css/font-awesome.min.css';
 @import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import '~@angular/material/theming';
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
 @include mat-core();
 
 $app-primary: mat-palette($mat-deep-purple);

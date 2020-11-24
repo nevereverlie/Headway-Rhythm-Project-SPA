@@ -31,6 +31,10 @@ export class AuthService {
       );
   }
 
+  isAdmin() {
+    return this.decodedToken.unique_name === 'admin';
+  }
+
   loggedIn() {
     const token = localStorage.getItem('token');
     return !this.jwtHelper.isTokenExpired(token);

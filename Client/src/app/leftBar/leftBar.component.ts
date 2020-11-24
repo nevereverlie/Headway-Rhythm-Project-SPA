@@ -42,6 +42,9 @@ export class LeftBarComponent implements OnInit {
     }
   }
 
+  isAdmin() {
+    return this.authService.isAdmin();
+  }
 
   getProfile() {
     this.userId = +this.authService.decodedToken.nameid;
