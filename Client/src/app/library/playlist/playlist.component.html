@@ -14,7 +14,14 @@
       <fa-icon [icon]="this.trackService.faPlus"></fa-icon>
       <span>Add tracks</span>
     </div>
+    <div class="deletePlaylistIconDiv" (click)="enablePlaylistDeleteConfirmationMode(playlist);" 
+      style="cursor: pointer;">
+      <fa-icon [icon]="this.trackService.faMinus"></fa-icon>
+      <span>Delete playlist</span>
+    </div>
   </div>
+
+  
   
 
   
@@ -53,6 +60,19 @@
     </div>
     <button class="submitButton" (click)="deleteTrackFromPlaylist(); cancelDeleteConfirmationMode(); ">Submit</button>
     <div class="cancelButtonDiv" (click)="cancelDeleteConfirmationMode()">
+      <span>Cancel</span>
+    </div>
+  </div>
+</div>
+
+<!-- Playlist Delete confirmation -->
+<div class="shadowDiv" *ngIf="isPlaylistDeleteConfirmationModeEnabled()">
+  <div class="deleteConfirmationDiv">
+    <div class="infospanDiv">
+      <span>Sure you want to remove this playlist?</span>
+    </div>
+    <button class="submitButton" (click)="deletePlaylist(); cancelPlaylistDeleteConfirmationMode(); ">Submit</button>
+    <div class="cancelButtonDiv" (click)="cancelPlaylistDeleteConfirmationMode()">
       <span>Cancel</span>
     </div>
   </div>

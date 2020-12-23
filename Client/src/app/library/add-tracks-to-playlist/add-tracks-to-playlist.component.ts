@@ -51,6 +51,9 @@ export class AddTracksToPlaylistComponent implements OnInit {
   addTrackToPlaylist(trackId: number, playlistId: number) {
     this.playlistService.addTrackToPlaylist(trackId, playlistId).subscribe(response => {
       console.log(response);
+      this.getTracksOfPlaylist();
+      this.getTracks();
+      this.alertify.success('Track added to playlist');
     }, error => {
       console.log(error);
       this.alertify.error(error);

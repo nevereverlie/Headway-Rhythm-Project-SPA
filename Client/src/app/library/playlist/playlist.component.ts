@@ -15,6 +15,8 @@ export class PlaylistComponent implements OnInit {
   faChevronLeft = faChevronLeft;
   private trackToDelete: any;
   private deleteConfirmationMode: boolean = false;
+  private playlistToDelete: any;
+  private deletePlaylistConfirmationMode: boolean = false;
   constructor(public playlistService: PlaylistService, public trackService: TrackService, 
     private router: Router, private route: ActivatedRoute) {
   }
@@ -49,11 +51,10 @@ export class PlaylistComponent implements OnInit {
       this.playlistService.alertify.success("Track removed from playlist");
     }, error => {
       // console.log(error);
-      this.playlistService.alertify.error(error);
+      this.playlistService.alertify.error("Problem deleting the track");
     });
     
   }
-
   enableDeleteConfirmationMode(track: any) {
     this.trackToDelete = track;
     this.deleteConfirmationMode = true;
@@ -63,5 +64,32 @@ export class PlaylistComponent implements OnInit {
   }
   isDeleteConfirmationModeEnabled() {
     return this.deleteConfirmationMode;
+  }
+
+
+
+
+
+  enablePlaylistDeleteConfirmationMode(playlist: any) {
+    this.playlistToDelete = playlist;
+    this.deletePlaylistConfirmationMode = true;
+  }
+  cancelPlaylistDeleteConfirmationMode() {
+    this.deletePlaylistConfirmationMode = false;
+  }
+  isPlaylistDeleteConfirmationModeEnabled() {
+    return this.deletePlaylistConfirmationMode;
+  }
+  deletePlaylist() {
+    this.playlistService.deletePlaylist(this.playlistToDelete.playlistId).subscribe(response => {
+      // console.log(response);
+      this.getTracksOfPlaylist();
+      this.playlistService.alertify.success("Playlist deleted");
+      this.router.navigateByUrl('library/playlists');
+    }, error => {
+      // console.log(error);
+      this.playlistService.alertify.error("Problem deleting playlist");
+    });
+    
   }
 }

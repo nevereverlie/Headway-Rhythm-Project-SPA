@@ -33,6 +33,9 @@ export class PlaylistService {
   getPlaylist(playlistId: string) {
     return this.http.get(this.baseUrl + 'playlists/get-playlist/' + playlistId);
   }
+  deletePlaylist(playlistId: any) {
+    return this.http.delete(this.baseUrl + 'playlists/delete-playlist/' + playlistId);
+  }
 
   setCurrentPlaylist(playlist: any) {
     this.currentPlaylist = playlist;

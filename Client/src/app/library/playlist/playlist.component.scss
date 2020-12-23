@@ -118,3 +118,21 @@
   color:white;
   cursor: pointer;
 }
+
+.deletePlaylistIconDiv{
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 300;
+  margin-left: 30px;
+  right: 0;
+  // color: rgb(180, 0, 255);
+  color: rgb(190, 190, 190);
+  cursor: pointer;
+}
+.deletePlaylistIconDiv fa-icon{
+  font-size: 14px;
+  margin-right: 5px;
+}
+.deletePlaylistIconDiv:hover{
+  color: white;
+}
